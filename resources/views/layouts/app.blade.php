@@ -66,11 +66,7 @@
                                 </form>
                             </div>
                         </li>
-                        @hasrole('admin')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Registrar usuario</a>
-                            </li>
-                        @endhasrole
+                        
                         @if (!Request::is('home'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/home') }}">Inicio</a>
