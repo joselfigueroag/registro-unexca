@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/patients/create', [PatientController::class, 'create'])->name('register_patient');
+Route::post('/patients', [PatientController::class, 'store']);
+Route::get('/patients', [PatientController::class, 'index'])->name('list_patients');
+Route::get('/patients/{identification_number}', [PatientController::class, 'show'])->name('show_patient');
