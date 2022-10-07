@@ -22,7 +22,6 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::paginate(15);
-        // return view('patients.index', ['patients' => $patients]);
         return view('patients.index', compact('patients'));
     }
 
@@ -52,6 +51,7 @@ class PatientController extends Controller
         $patient->gender = $request['gender'];
         $patient->identification_number = $request['identification_number'];
         $patient->birthday_date = $request['birthday_date'];
+        $patient->clinic_history = generateClinicHistory($patient);
         $patient->save();
 
         $additional_info = new AdditionalInfo;
@@ -59,6 +59,8 @@ class PatientController extends Controller
         $additional_info->address_1 = $request['address_1'];
         $additional_info->address_2 = $request['address_2'];
         $additional_info->save();
+
+        return redirect()->action([PatientController::class, 'index']);
     }
 
     /**
@@ -67,9 +69,10 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show($identification_number)
+    public function show($id)
     {
-        //
+        $patient = Patient::find($id=$id);
+        return view('patients.show', compact('patient'));
     }
 
     /**
