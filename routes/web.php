@@ -26,4 +26,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/patients/create', [PatientController::class, 'create'])->name('register_patient');
 Route::post('/patients', [PatientController::class, 'store']);
 Route::get('/patients', [PatientController::class, 'index'])->name('list_patients');
-Route::get('/patients/{identification_number}', [PatientController::class, 'show'])->name('show_patient');
+Route::get('/patients/{id}', [PatientController::class, 'show'])->name('show_patient');
