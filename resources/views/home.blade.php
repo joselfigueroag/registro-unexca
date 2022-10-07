@@ -41,26 +41,14 @@
                                     <hr class="dropdown-divider m-0 p-0 col-12">
                                     <a href="{{ route('list_patients') }}" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
                                         aria-pressed="true">Listar usuarios</a>
-                                    <hr class="dropdown-divider m-0 p-0 col-12">
+                                    {{-- <hr class="dropdown-divider m-0 p-0 col-12">
                                     <a href="#" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
                                         aria-pressed="true">Editar usuario</a>
                                     <hr class="dropdown-divider m-0 p-0 col-12">
                                     <a href="#" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                        aria-pressed="true">Eliminar usuario</a>
+                                        aria-pressed="true">Eliminar usuario</a> --}}
                                 </div>
                             </div>
-                            {{-- <div class="dropdown mb-3">
-                                <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownEmployee"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Empleado
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownEmployee">
-                                    @hasrole('admin')
-                                        <a href="{{ route('register') }}" class="btn btn-primary btn-lg col-12">Registrar
-                                            empleado</a>
-                                    @endhasrole
-                                </div>
-                            </div> --}}
                         </div>
                         <div class="col-6 text-center">
                             <div>

@@ -2,15 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="d-flex mb-3 col-3">
-            {{-- <form class="col-3 d-flex" action="/patients/{{getIdentificationNumber()}}" method="GET">
-                @csrf --}}
-            <input type="text" class="form-control" name="identification_number" id="identification_number" maxlength="8"
-                value="{{ old('identification_number') }}" placeholder="Cedula de Identidad">
-            <div class="ms-2">
-                <button class="btn btn-primary mr-auto" name="search" type="button" >Buscar</button>
+        <div class="d-flex mb-3 justify-content-between">
+            <div class="d-flex col-3">
+                <input type="text" class="form-control" name="identification_number" id="identification_number" maxlength="8"
+                    value="{{ old('identification_number') }}" placeholder="Cedula de Identidad">
+                <div class="ms-2">
+                    <button class="btn btn-primary mr-auto" name="search" type="button">Buscar</button>
+                </div>
             </div>
-            {{-- </form> --}}
+            <div>
+                <a class="btn btn-primary mr-auto" name="add" type="button" href="{{ route('register_patient') }}">Nuevo Registro</a>
+            </div>
         </div>
         <table class="table table-striped table-bordered">
             <thead>
