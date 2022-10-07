@@ -14,5 +14,8 @@
         "postcss": "^8.1.14",
         "sass": "^1.32.11",
         "vite": "^2.9.11"
+    },
+    "dependencies": {
+        "sweetalert": "^2.1.2"
     }
 }
