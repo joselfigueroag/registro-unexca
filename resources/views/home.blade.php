@@ -10,23 +10,14 @@
                         <div class="col-5">
                             @hasrole('admin')
                                 <div class="dropdown mb-3">
-                                    <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownEmployee"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Empleado
-                                    </button>
-                                    <div class="dropdown-menu p-0 col-12" aria-labelledby="dropdownEmployee">
-                                        <a href="{{ route('register') }}" class="btn btn-primary btn-lg col-12 rounded-0"
-                                            role="button" aria-pressed="true">Registrar empleado</a>
-                                        <hr class="dropdown-divider m-0 p-0 col-12">
-                                        <a href="#" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                            aria-pressed="true">Consultar empleado</a>
-                                        <hr class="dropdown-divider m-0 p-0 col-12">
-                                        <a href="#" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                            aria-pressed="true">Editar empleado</a>
-                                        <hr class="dropdown-divider m-0 p-0 col-12">
-                                        <a href="#" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                            aria-pressed="true">Eliminar empleado</a>
-                                    </div>
+                                    <a class="col-12 btn btn-primary" href="{{ route('list_users') }}">
+                                        Empleados
+                                    </a>
+                                </div>
+                                <div class="dropdown mb-3">
+                                    <a class="col-12 btn btn-primary" type="button" href="#">
+                                        Departamentos
+                                    </a>
                                 </div>
                             @endhasrole
                             <div class="dropdown mb-3">
@@ -39,8 +30,8 @@
                                         class="btn btn-primary btn-lg col-12 rounded-0" role="button"
                                         aria-pressed="true">Registrar usuario</a>
                                     <hr class="dropdown-divider m-0 p-0 col-12">
-                                    <a href="{{ route('list_patients') }}" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                        aria-pressed="true">Listar usuarios</a>
+                                    <a href="{{ route('list_patients') }}" class="btn btn-primary btn-lg col-12 rounded-0"
+                                        role="button" aria-pressed="true">Listar usuarios</a>
                                     {{-- <hr class="dropdown-divider m-0 p-0 col-12">
                                     <a href="#" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
                                         aria-pressed="true">Editar usuario</a>

@@ -1,10 +1,10 @@
 <?php
 
-function generateClinicHistory($patient)
+function generateClinicHistory($record)
 {
-    $first_block = substr($patient->first_name, 0, 1);
-    $second_block = substr($patient->first_surname, 0, 1);
-    $third_block = str_replace("-", "", $patient->birthday_date);
+    $first_block = substr($record->first_name, 0, 1);
+    $second_block = substr($record->first_surname, 0, 1);
+    $third_block = str_replace("-", "", $record->birthday_date);
     $random_string = generateRandomString();
     $clinic_history = $first_block.$second_block.$third_block."-".$random_string;
     return $clinic_history;

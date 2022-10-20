@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PatientController;
-use App\Models\Patient;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/users', [UserController::class, 'index'])->name('list_users');
+Route::get('/users/{id}', [UserController::class, 'show'])->name('show_user');
+Route::get('/users/{id}/delete', [UserController::class, 'destroy'])->name('delete_user');
 
 Route::get('/patients/create', [PatientController::class, 'create'])->name('register_patient');
 Route::post('/patients', [PatientController::class, 'store']);

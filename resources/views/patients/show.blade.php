@@ -24,7 +24,7 @@
         <div class="d-flex justify-content-end">
             @hasrole('admin')
                 <a class="btn btn-primary mr-auto me-3" type="submit" onclick="deleteConfirm(event)"
-                    href="/patients/{{ $patient->id }}/delete">{{ __('Delete') }}</a>
+                    href="/patients/{{ $patient->id }}/delete">Eliminar</a>
             @endhasrole
             <a class="btn btn-primary mr-auto" href="/patients/{{ $patient->id }}/edit">Editar</a>
         </div>
