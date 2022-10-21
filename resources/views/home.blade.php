@@ -19,6 +19,11 @@
                                         Departamentos
                                     </a>
                                 </div>
+                                <div class="dropdown mb-3">
+                                    <a class="col-12 btn btn-primary" type="button" href="#">
+                                        Servicios
+                                    </a>
+                                </div>
                             @endhasrole
                             <div class="dropdown mb-3">
                                 <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownUser"
@@ -32,12 +37,20 @@
                                     <hr class="dropdown-divider m-0 p-0 col-12">
                                     <a href="{{ route('list_patients') }}" class="btn btn-primary btn-lg col-12 rounded-0"
                                         role="button" aria-pressed="true">Listar usuarios</a>
-                                    {{-- <hr class="dropdown-divider m-0 p-0 col-12">
-                                    <a href="#" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                        aria-pressed="true">Editar usuario</a>
+                                </div>
+                            </div>
+                            <div class="dropdown mb-3">
+                                <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownUser"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Consultas
+                                </button>
+                                <div class="dropdown-menu p-0 col-12" aria-labelledby="dropdownUser">
+                                    <a href="#"
+                                        class="btn btn-primary btn-lg col-12 rounded-0" role="button"
+                                        aria-pressed="true">Registrar consulta</a>
                                     <hr class="dropdown-divider m-0 p-0 col-12">
-                                    <a href="#" class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                        aria-pressed="true">Eliminar usuario</a> --}}
+                                    <a href="#" class="btn btn-primary btn-lg col-12 rounded-0"
+                                        role="button" aria-pressed="true">Listar consultas</a>
                                 </div>
                             </div>
                         </div>
