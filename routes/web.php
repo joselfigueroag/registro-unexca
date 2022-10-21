@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ClinicalServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +37,11 @@ Route::get('/patients/{id}', [PatientController::class, 'show'])->name('show_pat
 Route::get('/patients/{id}/edit', [PatientController::class, 'edit'])->name('edit_patient');
 Route::put('/patients/{id}/edit', [PatientController::class, 'update'])->name('update_patient');
 Route::get('/patients/{id}/delete', [PatientController::class, 'destroy'])->name('delete_patient');
+
+Route::post('/departments', [DepartmentController::class, 'store'])->name('add_department');
+Route::get('/departments', [DepartmentController::class, 'index'])->name('list_departments');
+Route::get('/departments/{id}/delete', [DepartmentController::class, 'destroy'])->name('delete_department');
+
+Route::post('/clinical_services', [ClinicalServiceController::class, 'store'])->name('add_clinical_service');
+Route::get('/clinical_services', [ClinicalServiceController::class, 'index'])->name('list_clinical_services');
+Route::get('/clinical_services/{id}/delete', [ClinicalServiceController::class, 'destroy'])->name('delete_clinical_service');

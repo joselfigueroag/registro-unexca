@@ -16,6 +16,7 @@
         "vite": "^2.9.11"
     },
     "dependencies": {
+        "jquery": "^3.6.1",
         "sweetalert": "^2.1.2"
     }
 }
