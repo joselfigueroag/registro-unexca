@@ -12,13 +12,13 @@
                         <div>{{ $errors->first('name') }}</div>
                     @endif
                 </div>
-                <div class="form-group">
+                <div class="form-group ms-3">
                     <label for="department">Departamento</label>
                     <select name="department" id="department">
-                        <option value="seleccionar">Seleccionar</option>
                         @foreach ($departments as $department)
                             <option selected="selected" value="{{ $department->name }}">{{ $department->name }}</option>
                         @endforeach
+                        <option selected="selected" value="seleccionar">Seleccionar</option>
                     </select>
                 </div>
                 <div class="ms-3 pt-4">

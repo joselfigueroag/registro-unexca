@@ -28,15 +28,15 @@
                             <div class="dropdown mb-3">
                                 <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownUser"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Usuario
+                                    Paciente
                                 </button>
                                 <div class="dropdown-menu p-0 col-12" aria-labelledby="dropdownUser">
                                     <a href="{{ route('register_patient') }}"
                                         class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                        aria-pressed="true">Registrar usuario</a>
+                                        aria-pressed="true">Registrar paciente</a>
                                     <hr class="dropdown-divider m-0 p-0 col-12">
                                     <a href="{{ route('list_patients') }}" class="btn btn-primary btn-lg col-12 rounded-0"
-                                        role="button" aria-pressed="true">Listar usuarios</a>
+                                        role="button" aria-pressed="true">Listar pacientes</a>
                                 </div>
                             </div>
                             <div class="dropdown mb-3">
