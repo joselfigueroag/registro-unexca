@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientRequest;
 use App\Models\AdditionalInfo;
+use App\Models\Appointment;
+use App\Models\ClinicalService;
+use App\Models\Department;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 
@@ -72,7 +75,9 @@ class PatientController extends Controller
     public function show($id)
     {
         $patient = Patient::find($id=$id);
-        return view('patients.show', compact('patient'));
+        $departments = Department::all();
+        $clinical_services = ClinicalService::all();
+        return view('patients.show', compact('patient', 'departments', 'clinical_services'));
     }
 
     /**

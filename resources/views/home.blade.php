@@ -42,15 +42,15 @@
                             <div class="dropdown mb-3">
                                 <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownUser"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Consultas
+                                    Citas
                                 </button>
                                 <div class="dropdown-menu p-0 col-12" aria-labelledby="dropdownUser">
                                     <a href="#"
                                         class="btn btn-primary btn-lg col-12 rounded-0" role="button"
-                                        aria-pressed="true">Registrar consulta</a>
+                                        aria-pressed="true">Registrar cita</a>
                                     <hr class="dropdown-divider m-0 p-0 col-12">
                                     <a href="#" class="btn btn-primary btn-lg col-12 rounded-0"
-                                        role="button" aria-pressed="true">Listar consultas</a>
+                                        role="button" aria-pressed="true">Listar citas</a>
                                 </div>
                             </div>
                         </div>

@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ClinicalServiceController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\ClinicalServiceController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +46,6 @@ Route::get('/departments/{id}/delete', [DepartmentController::class, 'destroy'])
 Route::post('/clinical_services', [ClinicalServiceController::class, 'store'])->name('add_clinical_service');
 Route::get('/clinical_services', [ClinicalServiceController::class, 'index'])->name('list_clinical_services');
 Route::get('/clinical_services/{id}/delete', [ClinicalServiceController::class, 'destroy'])->name('delete_clinical_service');
+
+Route::get('/appointments', [AppointmentController::class, 'index'])->name('list_appointments');
+Route::post('/appointments/register/patient/{id}', [AppointmentController::class, 'store'])->name('register_appointment');
