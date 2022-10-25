@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Department;
 use App\Models\ClinicalService;
+use App\Models\Patient;
 
 class Appointment extends Model
 {
@@ -23,5 +24,10 @@ class Appointment extends Model
     public function clinical_service()
     {
         return $this->belongsTo(ClinicalService::class);
+    }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
     }
 }

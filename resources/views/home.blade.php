@@ -20,13 +20,16 @@
                                     </a>
                                 </div>
                                 <div class="dropdown mb-3">
-                                    <a class="col-12 btn btn-primary" type="button" href="{{ route('list_clinical_services') }}">
+                                    <a class="col-12 btn btn-primary" type="button"
+                                        href="{{ route('list_clinical_services') }}">
                                         Servicios Clinicos
                                     </a>
                                 </div>
                             @endhasrole
                             <div class="dropdown mb-3">
-                                <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownUser"
+                                <a class="col-12 btn btn-primary" type="button"
+                                    href="{{ route('list_patients') }}">Pacientes</a>
+                                {{-- <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownUser"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Paciente
                                 </button>
@@ -37,10 +40,12 @@
                                     <hr class="dropdown-divider m-0 p-0 col-12">
                                     <a href="{{ route('list_patients') }}" class="btn btn-primary btn-lg col-12 rounded-0"
                                         role="button" aria-pressed="true">Listar pacientes</a>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="dropdown mb-3">
-                                <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownUser"
+                                <a class="col-12 btn btn-primary" type="button"
+                                    href="{{ route('list_appointments') }}">Citas</a>
+                                {{-- <button class="col-12 btn btn-primary dropdown-toggle" type="button" id="dropdownUser"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Citas
                                 </button>
@@ -49,9 +54,9 @@
                                         class="btn btn-primary btn-lg col-12 rounded-0" role="button"
                                         aria-pressed="true">Registrar cita</a>
                                     <hr class="dropdown-divider m-0 p-0 col-12">
-                                    <a href="#" class="btn btn-primary btn-lg col-12 rounded-0"
+                                    <a href="{{ route('list_appointments') }}" class="btn btn-primary btn-lg col-12 rounded-0"
                                         role="button" aria-pressed="true">Listar citas</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="col-6 text-center">
