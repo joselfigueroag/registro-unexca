@@ -18,14 +18,16 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th scope="col" class="col-6">Usuario</th>
-                    <th scope="col" class="col-5">Rol</th>
+                    <th scope="col" class="col-4">Usuario</th>
+                    <th scope="col" class="col-4">Email</th>
+                    <th scope="col" class="col-3">Rol</th>
                     <th scope="col" class="col-1"></th>
                 </tr>
             </thead>
             
             @foreach ($users as $user)
                 <tr>
+                    <th scope="col">{{ $user->user }}</th>
                     <th scope="col">{{ $user->email }}</th>
                     <th scope="col">{{ $user->role() }}</th>
                     <th scope="col">

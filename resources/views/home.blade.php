@@ -19,8 +19,12 @@
                                         Departamentos
                                     </a>
                                 </div>
+                                @php($disabled = '')
+                                @if ($departments->isEmpty())
+                                    @php($disabled = 'disabled')
+                                @endif
                                 <div class="dropdown mb-3">
-                                    <a class="col-12 btn btn-primary" type="button"
+                                    <a class="col-12 btn btn-primary {{$disabled}}"  type="button"
                                         href="{{ route('list_clinical_services') }}">
                                         Servicios Clinicos
                                     </a>
