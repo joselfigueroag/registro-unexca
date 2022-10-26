@@ -58,22 +58,17 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="department">Departamento</label>
-                                <select name="department" id="department">
+                                <select name="department" id="department" onchange="load_services(this);">
                                     @foreach ($departments as $department)
-                                        <option selected="selected" value="{{ $department->name }}">
-                                            {{ $department->name }}</option>
+                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
-                                    <option selected="selected" value="seleccionar">Seleccionar</option>
+                                    <option selected value="" hidden>Seleccionar</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="clinical_service">Servicio clinico</label>
-                                <select name="clinical_service" id="clinical_service">
-                                    @foreach ($clinical_services as $clinical_service)
-                                        <option selected="selected" value="{{ $clinical_service->name }}">
-                                            {{ $clinical_service->name }}</option>
-                                    @endforeach
-                                    <option selected="selected" value="seleccionar">Seleccionar</option>
+                                <select name="clinical_service" id="clinical_service" disabled>
+                                    <option selected="selected" value="" hidden>Seleccionar</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -113,3 +108,23 @@
         </table>
     </div>
 @endsection
+
+<script>
+    var servicios = new Array();
+    servicios = @json($clinical_services);
+    console.log(servicios);
+
+    function load_services(obj){
+        //document.getElementById('clinical_service').options.length=0;
+        document.getElementById('clinical_service').disabled = false;
+        var x=1;
+        for (var i=0; i < servicios.length;i++){
+            if (servicios[i].department_id == obj.value){
+            document.getElementById('clinical_service').options[x]=new Option(servicios[i].name, servicios[i].id);
+            x++;
+            }
+        }
+        console.log(obj.value);
+        //document.getElementById('clinical_service').options[]=new Option("Seleccionar", " ");
+    }
+</script>
