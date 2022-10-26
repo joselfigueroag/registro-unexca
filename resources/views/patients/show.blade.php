@@ -14,6 +14,7 @@
                 <p><span class="fw-bold">Cedula de Identidad:</span> {{ $patient->identification_number }}</p>
                 <p><span class="fw-bold">Fecha de Nacimiento:</span> {{ $patient->birthday_date }}</p>
                 <p><span class="fw-bold">Genero:</span> {{ $patient->gender }}</p>
+                <p><span class="fw-bold">Correo:</span> {{ $patient->email }}</p>
             </div>
             <div class="col-4">
                 <p><span class="fw-bold">Historia Clinica:</span> {{ $patient->clinic_history }}</p>

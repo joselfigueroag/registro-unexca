@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\AdditionalInfo;
 use App\Models\Appointment;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Patient extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
-    protected $fillable = ['clinic_history', 'first_name', 'second_name', 'first_surname', 'second_surname', 'gender', 'identification_number', 'birthday_date'];
+    protected $fillable = ['clinic_history', 'first_name', 'second_name', 'first_surname', 'second_surname', 'gender', 'identification_number', 'birthday_date', 'email'];
 
     protected $hidden = ['id'];
 

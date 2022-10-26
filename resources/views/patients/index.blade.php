@@ -23,6 +23,7 @@
                     <th scope="col">Primer Apellido</th>
                     <th scope="col">Segundo Apellido</th>
                     <th scope="col">Cedula de Identidad</th>
+                    <th scope="col">Correo Electronico</th>
                     <th scope="col">Genero</th>
                     <th scope="col">Fecha de Nacimiento</th>
                 </tr>
@@ -39,6 +40,7 @@
                     <th scope="col">{{ $patient->first_surname }}</th>
                     <th scope="col">{{ $patient->second_surname }}</th>
                     <th scope="col">{{ $patient->identification_number }}</th>
+                    <th scope="col">{{ $patient->email }}</th>
                     <th scope="col">{{ $patient->gender }}</th>
                     <th scope="col">{{ $patient->birthday_date }}</th>
                 </tr>

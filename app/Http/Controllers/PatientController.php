@@ -54,6 +54,7 @@ class PatientController extends Controller
         $patient->gender = $request['gender'];
         $patient->identification_number = $request['identification_number'];
         $patient->birthday_date = $request['birthday_date'];
+        $patient->email = $request['email'];
         $patient->clinic_history = generateClinicHistory($patient);
         $patient->save();
 
@@ -99,7 +100,7 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PatientRequest $request, $id)
     {
         $patient = Patient::find($id);
         $patient->fill($request->all());

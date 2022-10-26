@@ -24,14 +24,14 @@ class PatientRequest extends FormRequest
     public function rules()
     {   
         return match($this->method()){
-            'POST' => $this->store(),
-            'PUT', 'PATCH' => $this->update(),
+            'POST' => $this->store_and_update(),
+            'PUT', 'PATCH' => $this->store_and_update(),
             'DELETE' => $this->destroy(),
             default => $this->view()
         };
     }
     
-    public function store()
+    public function store_and_update()
     {
         return [
             'first_name' => 'required|alpha|max:20',
@@ -40,6 +40,7 @@ class PatientRequest extends FormRequest
             'second_surname' => 'alpha|max:20|nullable',
             'gender' => 'required',
             'identification_number' => 'numeric|nullable',
+            'email' => 'email|nullable',
             'birthday_date' => 'required|date',
 
             'address_1' => 'required|max:100',
@@ -50,7 +51,7 @@ class PatientRequest extends FormRequest
     public function messages()
     {
         return [
-            'gender.required' => 'Debe seleccionar alguna opcion',
+            'gender.required' => 'Eleccion requerida',
         ];
     }
 
