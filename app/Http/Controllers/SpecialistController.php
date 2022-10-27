@@ -19,9 +19,7 @@ class SpecialistController extends Controller
     public function index()
     {
         $specialists = DB::select('select * from especialistas');
-        //$specialists = specialist::all();
-        $departments = Department::all();
-        return view('specialists.index',['specialists' => $specialists, 'departments' => $departments]);
+        return view('specialists.index',compact('specialists'));
     }
 
     /**
