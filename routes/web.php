@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ClinicalServiceController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -58,4 +59,10 @@ Route::get('/clinical_services/{id}/delete','destroy')->name('delete_clinical_se
 Route::controller(AppointmentController::class)->middleware('auth')->group(function(){
 Route::get('/appointments','index')->name('list_appointments');
 Route::post('/appointments/register/patient/{id}','store')->name('register_appointment');
+});
+
+Route::controller(SpecialistController::class)->middleware('auth')->group(function(){
+   Route::get('/specialists','index')->name('specialist_index');
+   Route::get('/specialists/create','create')->name('register_specialists');
+   Route::post('/specialists/create','store')->name('register_specialists');
 });
