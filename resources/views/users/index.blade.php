@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="container">
-        <div class="d-flex mb-3 justify-content-between">
-            <div class="d-flex col-3">
-                <input type="text" class="form-control" name="user" id="user" value="{{ old('user') }}"
-                    placeholder="Usuario">
+        <div class="row mb-3 justify-content-between">
+            <div class="d-flex col-sm-3 mt-2">
+                <input type="text" class="form-control" name="user" id="user" value="{{ old('user') }}"placeholder="Usuario">
                 <div class="ms-2">
                     <button class="btn btn-primary mr-auto" name="search" type="button">Buscar</button>
                 </div>
             </div>
-            <div>
-                <a class="btn btn-primary mr-auto" name="add" type="button" href="{{ route('register') }}">Nuevo
+            <div class="d-flex col-sm-2 mt-2 ">
+                <a class="btn btn-primary" name="add" type="button" href="{{ route('register') }}" style="margin-left: auto;">Nuevo
                     Registro</a>
             </div>
         </div>
+        <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -37,6 +37,7 @@
                 </tr>
             @endforeach
         </table>
+        </div>
         <div class="d-flex justify-content-center">
             {!! $users->links() !!}
         </div>
