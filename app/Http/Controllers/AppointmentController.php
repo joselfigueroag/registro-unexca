@@ -39,17 +39,18 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {   
         $department = Department::where('name', $request['department'])->get()->first();
-        $clinical_service = ClinicalService::where('department_id', $department->id)->get()->first();
+        $clinical_service = ClinicalService::where('department_id', $request->department)->get()->first();
 
         $appointment = new Appointment;
         $appointment->patient_id = $request['patient_id'];
         $appointment->appointment_date = $request['appointment_date'];
-        $appointment->department_id = $department->id;
+        $appointment->department_id = $request->department;
         $appointment->clinical_service_id = $clinical_service->id;
         $appointment->description = $request['description'];
         $appointment->save();
 
         return redirect()->route('show_patient', $request['patient_id']);
+        //return $request;
     }
 
     /**

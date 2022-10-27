@@ -4,15 +4,15 @@
     <div class="container">
         <form class="p-3 border border-primary rounded" action="/clinical_services" method="POST">
             @csrf
-            <div class="form-row d-flex">
-                <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
                     <label for="name">Servicio Clinico</label>
                     <input type="text" class="form-control" name="name" maxlength="30" value="{{ old('name') }}">
                     @if ($errors->has('name'))
                         <div>{{ $errors->first('name') }}</div>
                     @endif
                 </div>
-                <div class="form-group ms-3">
+                <div class="col-sm-2">
                     <label for="department">Departamento</label>
                     <select name="department" id="department">
                         @foreach ($departments as $department)
@@ -21,7 +21,7 @@
                         <option selected="selected" value="seleccionar">Seleccionar</option>
                     </select>
                 </div>
-                <div class="ms-3 pt-4">
+                <div class="col-sm-1 pt-4">
                     <button class="btn btn-primary mr-auto" type="submit">Agregar</button>
                 </div>
             </div>
