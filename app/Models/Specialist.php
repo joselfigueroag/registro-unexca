@@ -22,4 +22,8 @@ class specialist extends Model
         'department',
         'clinical_service'
     ];
+
+    public function departments(){
+        return $this->hasOne(Department::class);
+    }
 }

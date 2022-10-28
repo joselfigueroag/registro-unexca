@@ -29,12 +29,12 @@
                 </thead>
                 @foreach ($specialists as $specialist)
                     <tr>
-                        <th scope="col">{{$specialist->departamento}}</th>
-                        <th scope="col">{{$specialist->servicio}}</th>
-                        <th scope="col">{{$specialist->nombre}}</th>
-                        <th scope="col">{{$specialist->apellido}}</th>
-                        <th scope="col">{{$specialist->cedula}}</th>
-                        <th scope="col">{{$specialist->correo}}</th>
+                        <th scope="col">{{$specialist->department}}</th>
+                        <th scope="col">{{$specialist->clinical_service}}</th>
+                        <th scope="col">{{$specialist->first_name}}</th>
+                        <th scope="col">{{$specialist->second_name}}</th>
+                        <th scope="col">{{$specialist->identification_number}}</th>
+                        <th scope="col">{{$specialist->email}}</th>
                         <th scope="col">Ver / Editar</th>
                     </tr>
                 @endforeach
