@@ -6,7 +6,7 @@ use App\Http\Requests\StorespecialistRequest;
 use App\Http\Requests\UpdatespecialistRequest;
 use App\Models\ClinicalService;
 use App\Models\Department;
-use App\Models\specialist;
+use App\Models\Specialist;
 use Illuminate\Support\Facades\DB;
 
 class SpecialistController extends Controller
@@ -40,20 +40,20 @@ class SpecialistController extends Controller
      * @param  \App\Http\Requests\StorespecialistRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorespecialistRequest $request)
+    public function store(StoreSpecialistRequest $request)
     {
         unset($request['_token']);
-        $create = specialist::create($request->all());
+        $create = Specialist::create($request->all());
         return redirect()->action([SpecialistController::class, 'index']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\specialist  $specialist
+     * @param  \App\Models\Specialist  $specialist
      * @return \Illuminate\Http\Response
      */
-    public function show(specialist $specialist)
+    public function show(Specialist $specialist)
     {
         //
     }
@@ -61,10 +61,10 @@ class SpecialistController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\specialist  $specialist
+     * @param  \App\Models\Specialist  $specialist
      * @return \Illuminate\Http\Response
      */
-    public function edit(specialist $specialist)
+    public function edit(Specialist $specialist)
     {
         //
     }
@@ -72,11 +72,11 @@ class SpecialistController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatespecialistRequest  $request
-     * @param  \App\Models\specialist  $specialist
+     * @param  \App\Http\Requests\UpdateSpecialistRequest  $request
+     * @param  \App\Models\Specialist  $specialist
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatespecialistRequest $request, specialist $specialist)
+    public function update(UpdateSpecialistRequest $request, Specialist $specialist)
     {
         //
     }
@@ -84,10 +84,10 @@ class SpecialistController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\specialist  $specialist
+     * @param  \App\Models\Specialist  $specialist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(specialist $specialist)
+    public function destroy(Specialist $specialist)
     {
         //
     }

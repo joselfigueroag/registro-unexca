@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Specialist;
+use App\Models\ClinicalService;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SpecialistSeeder extends Seeder
+class ClinicalServiceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class SpecialistSeeder extends Seeder
      */
     public function run()
     {
-        Specialist::factory()->count(20)->create();
+        ClinicalService::factory()->count(20)->create();
     }
 }
