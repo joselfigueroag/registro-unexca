@@ -33,24 +33,7 @@ return new class extends Migration
         });
 
         
-        DB::unprepared('
-            CREATE OR REPLACE VIEW public.especialistas
-            AS
-            SELECT 
-            a.first_name AS nombre,
-            a.first_surname AS apellido,
-            a.identification_number AS cedula,
-            a.email AS correo,
-            b.name AS departamento,
-            c.name AS servicio
-            FROM specialists a
-                JOIN departments b ON a.department = b.id
-                JOIN clinical_services c ON a.clinical_service = c.id;
         
-            ALTER TABLE public.especialistas
-            OWNER TO postgres;
-        ');
-
     }
 
     /**

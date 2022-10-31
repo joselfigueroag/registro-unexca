@@ -26,11 +26,11 @@ class SpecialistController extends Controller
             'departments.name as department',
             'clinical_services.name as clinical_service',
             'specialists.first_name',
-            'specialists.second_name',
+            'specialists.first_surname',
             'specialists.identification_number',
             'specialists.email'
 
-        )->get();
+        )->paginate(10);
 
         return view('specialists.index',compact('specialists'));
     }

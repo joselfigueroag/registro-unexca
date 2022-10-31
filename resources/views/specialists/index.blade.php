@@ -32,7 +32,7 @@
                         <th scope="col">{{$specialist->department}}</th>
                         <th scope="col">{{$specialist->clinical_service}}</th>
                         <th scope="col">{{$specialist->first_name}}</th>
-                        <th scope="col">{{$specialist->second_name}}</th>
+                        <th scope="col">{{$specialist->first_surname}}</th>
                         <th scope="col">{{$specialist->identification_number}}</th>
                         <th scope="col">{{$specialist->email}}</th>
                         <th scope="col">Ver / Editar</th>
@@ -41,7 +41,7 @@
             </table>
         </div>
         <div class="d-flex justify-content-center">
- 
+            {{$specialists->links()}}
         </div>
     </div>
 @endsection
