@@ -34,8 +34,10 @@
                         <th scope="col">{{$specialist->first_name}}</th>
                         <th scope="col">{{$specialist->first_surname}}</th>
                         <th scope="col">{{$specialist->identification_number}}</th>
-                        <th scope="col">{{$specialist->email}}</th>
-                        <th scope="col">Ver / Editar</th>
+                        <th scope="col">{{$specialist->email}}</th>  
+                        <th scope="col">
+                            <a class="btn btn-primary" type="submit" href="/specialists/{{$specialist->id}}">ver</a>
+                        </th>
                     </tr>
                 @endforeach
             </table>

@@ -65,4 +65,6 @@ Route::controller(SpecialistController::class)->middleware('auth')->group(functi
    Route::get('/specialists','index')->name('specialist_index');
    Route::get('/specialists/create','create')->name('register_specialists');
    Route::post('/specialists/create','store')->name('register_specialists');
+   Route::get('/specialists/{id}' , 'show')->name('show_specialist');
+   Route::get('/specialists/{id}/delete','destroy')->name('delete_specialist');
 });

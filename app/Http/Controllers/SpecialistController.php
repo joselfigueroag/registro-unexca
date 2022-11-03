@@ -56,9 +56,11 @@ class SpecialistController extends Controller
      * @param  \App\Models\Specialist  $specialist
      * @return \Illuminate\Http\Response
      */
-    public function show(Specialist $specialist)
+    public function show(Specialist $specialist, $id)
     {
-        //
+        $specialist = $specialist::find($id);
+        return view('specialists.show', compact('specialist'));
+        //return $specialist;
     }
 
     /**
@@ -90,8 +92,9 @@ class SpecialistController extends Controller
      * @param  \App\Models\Specialist  $specialist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Specialist $specialist)
+    public function destroy(Specialist $specialist, $id)
     {
-        //
+       $specialist::find($id)->delete();
+       return redirect()->route('specialist_index');
     }
 }
