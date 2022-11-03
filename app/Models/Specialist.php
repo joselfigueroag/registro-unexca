@@ -19,11 +19,10 @@ class Specialist extends Model
         'birthday_date', 
         'email',
         'address',
-        'department',
-        'clinical_service'
+        'clinical_service_id'
     ];
 
-    public function departments(){
-        return $this->hasOne(Department::class);
+    public function department(){
+        return $this->belongsTo(Department::class);
     }
 }
