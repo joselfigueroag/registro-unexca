@@ -22,7 +22,8 @@ class Specialist extends Model
         'clinical_service_id'
     ];
 
-    public function department(){
-        return $this->belongsTo(Department::class);
+    public function clinical_service()
+    {
+        return $this->belongsTo(ClinicalService::class);
     }
 }

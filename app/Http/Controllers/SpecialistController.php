@@ -20,17 +20,7 @@ class SpecialistController extends Controller
     {
         //$specialists = DB::select('select * from especialistas');
         //return view('specialists.index',compact('specialists'));
-        $specialists = Specialist::join('departments','departments.id','=','specialists.department')
-        ->join('clinical_services','clinical_services.id','=','specialists.clinical_service')
-        ->select(
-            'departments.name as department',
-            'clinical_services.name as clinical_service',
-            'specialists.first_name',
-            'specialists.first_surname',
-            'specialists.identification_number',
-            'specialists.email'
-
-        )->paginate(10);
+        $specialists = Specialist::paginate(10);
 
         return view('specialists.index',compact('specialists'));
     }

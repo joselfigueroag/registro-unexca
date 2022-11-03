@@ -29,8 +29,8 @@
                 </thead>
                 @foreach ($specialists as $specialist)
                     <tr>
-                        <th scope="col">{{$specialist->department}}</th>
-                        <th scope="col">{{$specialist->clinical_service}}</th>
+                        <th scope="col">{{$specialist->clinical_service->department->name}}</th>
+                        <th scope="col">{{$specialist->clinical_service->name}}</th>
                         <th scope="col">{{$specialist->first_name}}</th>
                         <th scope="col">{{$specialist->first_surname}}</th>
                         <th scope="col">{{$specialist->identification_number}}</th>
