@@ -22,9 +22,18 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $patients = Patient::paginate(15);
+        $search = $request->input('search');
+        if($search){
+            $patients = Patient::where(
+                'identification_number', "LIKE", '%'.$search.'%'
+            )->orWhere(
+                'clinic_history', "LIKE", '%'.$search.'%'
+            )->paginate(15);
+        }else{
+            $patients = Patient::paginate(15);
+        }
         return view('patients.index', compact('patients'));
     }
 

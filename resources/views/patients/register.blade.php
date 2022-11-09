@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form class="p-3 border border-primary rounded" action="/patients" method="POST">
+        <form class="p-3 border border-primary rounded" action="/patients/create" method="POST">
             @csrf
             <div class="form-row d-flex justify-content-between mb-3">
                 <div class="form-group custom-div">
