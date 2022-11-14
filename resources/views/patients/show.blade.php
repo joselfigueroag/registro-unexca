@@ -121,7 +121,7 @@
             @foreach ($patient->appointments as $appointment)
                 <tr>
                     <th scope="col">{{ $appointment->appointment_date }}</th>
-                    <th scope="col">{{ $appointment->department->name }}</th>
+                    <th scope="col">{{ $appointment->clinical_service->department->name }}</th>
                     <th scope="col">{{ $appointment->clinical_service->name }}</th>
                     <th scope="col">{{ $appointment->description }}</th>
                 </tr>
