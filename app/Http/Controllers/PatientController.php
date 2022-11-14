@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientRequest;
-use App\Models\AdditionalInfo;
+use App\Models\ContactInfo;
 use App\Models\Appointment;
 use App\Models\ClinicalService;
 use App\Models\Department;
@@ -63,15 +63,17 @@ class PatientController extends Controller
         $patient->gender = $request['gender'];
         $patient->identification_number = $request['identification_number'];
         $patient->birthday_date = $request['birthday_date'];
-        $patient->email = $request['email'];
         $patient->clinic_history = generateClinicHistory($patient);
         $patient->save();
-
-        $additional_info = new AdditionalInfo;
-        $additional_info->patient_id = $patient->id;
-        $additional_info->address_1 = $request['address_1'];
-        $additional_info->address_2 = $request['address_2'];
-        $additional_info->save();
+        
+        $contact_info = new ContactInfo;
+        $contact_info->patient_id = $patient->id;
+        $contact_info->email = $request['email'];
+        $contact_info->address_1 = $request['address_1'];
+        $contact_info->address_2 = $request['address_2'];
+        $contact_info->cellphone_number = $request['cellphone_number'];
+        $contact_info->local_number = $request['local_number'];
+        $contact_info->save();
 
         return redirect()->action([PatientController::class, 'index']);
     }

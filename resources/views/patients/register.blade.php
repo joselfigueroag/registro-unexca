@@ -48,13 +48,6 @@
                     @endif
                 </div>
                 <div class="form-group custom-div">
-                    <label for="email">Correo Electronico</label>
-                    <input type="text" class="form-control" name="email" maxlength="20" value="{{ old('email') }}">
-                    @if ($errors->has('email'))
-                        <div class="error-message">{{ $errors->first('email') }}</div>
-                    @endif
-                </div>
-                <div class="form-group custom-div">
                     <label for="birthday_date">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" name="birthday_date" value="{{ old('birthday_date') }}">
                     @if ($errors->has('birthday_date'))
@@ -81,6 +74,29 @@
                 </div>
             </div>
             <hr size="10" class="mt-0">
+            <div class="form-row d-flex justify-content-between mb-3">
+                <div class="form-group custom-div">
+                    <label for="email">Correo Electronico</label>
+                    <input type="text" class="form-control" name="email" maxlength="50" value="{{ old('email') }}">
+                    @if ($errors->has('email'))
+                        <div class="error-message">{{ $errors->first('email') }}</div>
+                    @endif
+                </div>
+                <div class="form-group custom-div">
+                    <label for="cellphone_number">Numero de celular</label>
+                    <input type="text" class="form-control" name="cellphone_number" maxlength="11" value="{{ old('cellphone_number') }}">
+                    @if ($errors->has('cellphone_number'))
+                        <div class="error-message">{{ $errors->first('cellphone_number') }}</div>
+                    @endif
+                </div>
+                <div class="form-group custom-div">
+                    <label for="local_number">Numero local</label>
+                    <input type="text" class="form-control" name="local_number" maxlength="11" value="{{ old('local_number') }}">
+                    @if ($errors->has('local_number'))
+                        <div class="error-message">{{ $errors->first('local_number') }}</div>
+                    @endif
+                </div>
+            </div>
             <div class="form-row d-flex justify-content-between mb-3">
                 <div class="col-5 form-group">
                     <label for="address_1">Direccion 1</label>

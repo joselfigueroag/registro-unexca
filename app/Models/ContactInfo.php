@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AdditionalInfo extends Model
+class ContactInfo extends Model
 {
     use HasFactory;
 
-    protected $table = 'additional_info';
+    protected $table = 'contact_info';
 
-    protected $fillable = ['patient_id', 'address_1', 'address_2'];
+    protected $fillable = ['patient_id', 'address_1', 'address_2', 'email', 'cellphone_number', 'local_number'];
 
     protected $hidden = ['id'];
 }

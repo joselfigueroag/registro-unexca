@@ -49,13 +49,6 @@
                     @endif
                 </div>
                 <div class="form-group custom-div">
-                    <label for="email">Correo Electronico</label>
-                    <input type="text" class="form-control" name="email" maxlength="20" value={{ $patient->email }}>
-                    @if ($errors->has('email'))
-                        <div class="error-message">{{ $errors->first('email') }}</div>
-                    @endif
-                </div>
-                <div class="form-group custom-div">
                     <label for="birthday_date">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" name="birthday_date" value={{ $patient->birthday_date }}>
                     @if ($errors->has('birthday_date'))
@@ -84,10 +77,33 @@
             </div>
             <hr size="10" class="mt-0">
             <div class="form-row d-flex justify-content-between mb-3">
+                <div class="form-group custom-div">
+                    <label for="email">Correo Electronico</label>
+                    <input type="text" class="form-control" name="email" maxlength="50" value={{ $patient->contact_info->email }}>
+                    @if ($errors->has('email'))
+                        <div class="error-message">{{ $errors->first('email') }}</div>
+                    @endif
+                </div>
+                <div class="form-group custom-div">
+                    <label for="cellphone_number">Numero Celular</label>
+                    <input type="text" class="form-control" name="cellphone_number" maxlength="11" value={{ $patient->contact_info->cellphone_number }}>
+                    @if ($errors->has('cellphone_number'))
+                        <div class="error-message">{{ $errors->first('cellphone_number') }}</div>
+                    @endif
+                </div>
+                <div class="form-group custom-div">
+                    <label for="local_number">Numero Local</label>
+                    <input type="text" class="form-control" name="local_number" maxlength="11" value={{ $patient->contact_info->local_number }}>
+                    @if ($errors->has('local_number'))
+                        <div class="error-message">{{ $errors->first('local_number') }}</div>
+                    @endif
+                </div>
+            </div>
+            <div class="form-row d-flex justify-content-between mb-3">
                 <div class="col-4 form-group">
                     <label for="address_1">Direccion 1</label>
                     <input type="text" class="form-control" name="address_1"
-                        value="{{ $patient->additional_info->address_1 }}">
+                        value="{{ $patient->contact_info->address_1 }}">
                     @if ($errors->has('address_1'))
                         <div class="error-message">{{ $errors->first('address_1') }}</div>
                     @endif
@@ -95,7 +111,7 @@
                 <div class="col-4 form-group">
                     <label for="address_2">Direccion 2</label>
                     <input type="text" class="form-control" name="address_2"
-                        value="{{ $patient->additional_info->address_2 }}">
+                        value="{{ $patient->contact_info->address_2 }}">
                     @if ($errors->has('address_2'))
                         <div class="error-message">{{ $errors->first('address_2') }}</div>
                     @endif

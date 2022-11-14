@@ -2,25 +2,45 @@
 
 @section('content')
     <div class="container">
+        <div class="d-flex justify-content-between">
+            <h3>Informacion personal</h3>
+            <p><span class="fw-bold">Historia Clinica:</span> {{ $patient->clinic_history }}</p>
+        </div>
         <div class="d-flex border p-2 mb-3">
             <div class="col-4">
                 <p><span class="fw-bold">Primer Nombre:</span> {{ $patient->first_name }}</p>
                 <p><span class="fw-bold">Segundo Nombre:</span> {{ $patient->second_name }}</p>
+                <p><span class="fw-bold">Genero:</span> {{ $patient->gender }}</p>
+            </div>
+            <div class="col-4">
                 <p><span class="fw-bold">Primer Apellido:</span> {{ $patient->first_surname }}</p>
                 <p><span class="fw-bold">Segundo Apellido:</span> {{ $patient->second_surname }}</p>
-
             </div>
             <div class="col-4">
-                <p><span class="fw-bold">Cedula de Identidad:</span> {{ $patient->identification_number }}</p>
                 <p><span class="fw-bold">Fecha de Nacimiento:</span> {{ $patient->birthday_date }}</p>
-                <p><span class="fw-bold">Genero:</span> {{ $patient->gender }}</p>
-                <p><span class="fw-bold">Correo:</span> {{ $patient->email }}</p>
+                <p><span class="fw-bold">Cedula de Identidad:</span> {{ $patient->identification_number }}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <h3>Informacion de contacto</h3>
+        </div>
+        <div class="d-flex border p-2 mb-3">
+            <div class="col-4">
+                <p><span class="fw-bold">Correo:</span> {{ $patient->contact_info->email }}</p>
+                <p><span class="fw-bold">Direccion 1:</span> {{ $patient->contact_info->address_1 }}</p>
             </div>
             <div class="col-4">
-                <p><span class="fw-bold">Historia Clinica:</span> {{ $patient->clinic_history }}</p>
-                <p><span class="fw-bold">Direccion 1:</span> {{ $patient->additional_info->address_1 }}</p>
-                <p><span class="fw-bold">Direccion 2:</span> {{ $patient->additional_info->address_2 }}</p>
+                <p><span class="fw-bold">Numero Celular:</span> {{ $patient->contact_info->cellphone_number }}</p>
+                <p><span class="fw-bold">Direccion 2:</span> {{ $patient->contact_info->address_2 }}</p>
             </div>
+            <div class="col-4">
+                <p><span class="fw-bold">Numero Local:</span> {{ $patient->contact_info->local_number }}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <h3>Datos medicos</h3>
+        </div>
+        <div class="d-flex border p-2 mb-3">
         </div>
         <div class="d-flex justify-content-end">
             @hasrole('admin')
