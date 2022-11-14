@@ -6,6 +6,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DeletedRecordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -68,4 +69,9 @@ Route::controller(SpecialistController::class)->middleware('auth')->group(functi
     Route::get('/specialists/{id}' , 'show')->name('show_specialist');
     Route::get('/specialists/{id}/delete','destroy')->name('delete_specialist');
 });
+
+Route::controller(DeletedRecordController::class)->middleware('auth')->group(function(){
+    Route::get('/deleted_records','index')->name('deleted_records');
+    Route::get('/deleted_records/{id}/restore','restore')->name('restore_record');
+    Route::get('/deleted_records/{id}/force_delete','force_delete')->name('force_delete_record');
 });
