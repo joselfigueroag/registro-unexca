@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-between">
-            <h3>Informacion personal</h3>
+            <h3><u>Informacion personal</u></h3>
             <p><span class="fw-bold">Historia Clinica:</span> {{ $patient->clinic_history }}</p>
         </div>
         <div class="d-flex border p-2 mb-3">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-between">
-            <h3>Informacion de contacto</h3>
+            <h3><u>Informacion de contacto</u></h3>
         </div>
         <div class="d-flex border p-2 mb-3">
             <div class="col-4">
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-between">
-            <h3>Datos medicos</h3>
+            <h3><u>Datos medicos</u></h3>
         </div>
         <div class="d-flex border p-2 mb-3">
         </div>

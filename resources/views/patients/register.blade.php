@@ -4,6 +4,9 @@
     <div class="container">
         <form class="p-3 border border-primary rounded" action="/patients/create" method="POST">
             @csrf
+            <div class="d-flex justify-content-between">
+                <h3><u>Informacion personal</u></h3>
+            </div>
             <div class="form-row d-flex justify-content-between mb-3">
                 <div class="form-group custom-div">
                     <label for="first_name">Primer Nombre</label>
@@ -74,6 +77,9 @@
                 </div>
             </div>
             <hr size="10" class="mt-0">
+            <div class="d-flex justify-content-between">
+                <h3><u>Informacion de contacto</u></h3>
+            </div>
             <div class="form-row d-flex justify-content-between mb-3">
                 <div class="form-group custom-div">
                     <label for="email">Correo Electronico</label>
@@ -112,6 +118,10 @@
                         <div class="error-message">{{ $errors->first('address_2') }}</div>
                     @endif
                 </div>
+            </div>
+            <hr size="10" class="mt-0">
+            <div class="d-flex justify-content-between">
+                <h3><u>Datos medicos</u></h3>
             </div>
             <hr size="10" class="mt-0">
             <div class="d-flex justify-content-end">
