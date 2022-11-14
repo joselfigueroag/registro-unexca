@@ -5,7 +5,7 @@
         <div class="d-flex border p-2 mb-3">
             <form action="/appointments" method="POST" class="d-flex">
                 @csrf
-                <input type="date" class="form-control me-2" name="search_by_date" placeholder="Buscar por fecha">
+                <input type="date" class="form-control me-2" name="date" value="{{ $date }}">
                 <div class="vr"></div>
                 <select name="clinical_service" id="clinical_service" class="ms-2 me-2">
                     @foreach ($clinical_services as $clinical_service)
@@ -32,7 +32,11 @@
                 </thead>
                 @foreach ($appointments as $appointment)
                     <tr>
-                        <th scope="col">{{ $appointment->patient->full_name }}</th>
+                        @if ($appointment->patient)
+                            <th scope="col">{{ $appointment->patient->full_name }}</th>
+                        @else
+                            <th scope="col"></th>
+                        @endif
                         <th scope="col">{{ $appointment->appointment_date }}</th>
                         <th scope="col">{{ $appointment->clinical_service->department->name }}</th>
                         <th scope="col">{{ $appointment->clinical_service->name }}</th>

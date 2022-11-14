@@ -6,7 +6,7 @@
             <div class="d-flex col-sm-3 mt-2">
                 <form action="/patients" method="POST" class="d-flex">
                     @csrf
-                    <input type="text" class="form-control" name="search" placeholder="Buscar historia o cedula">
+                    <input type="text" class="form-control" name="search" placeholder="Buscar historia o cedula" value="{{ $search }}">
                     <div class="ms-2">
                         <button class="btn btn-primary mr-auto" type="submit">Buscar</button>
                     </div>

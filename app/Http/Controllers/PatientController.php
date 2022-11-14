@@ -34,7 +34,7 @@ class PatientController extends Controller
         }else{
             $patients = Patient::paginate(15);
         }
-        return view('patients.index', compact('patients'));
+        return view('patients.index', compact('patients', 'search'));
     }
 
     /**
@@ -120,7 +120,6 @@ class PatientController extends Controller
         $addit_info = $patient->additional_info;
         $addit_info->fill($request->all());
         $addit_info->save();
-
         return redirect()->action([PatientController::class, 'show'], ['id' => $patient->id]);
     }
 
@@ -133,8 +132,9 @@ class PatientController extends Controller
     public function destroy($id)
     {
         $patient = Patient::find($id);
+        $appointments = Appointment::where('patient_id', $patient->id)->get();
         $patient->delete();
-        
+        $appointments->each->delete();
         return redirect()->action([PatientController::class, 'index']);
     }
 }

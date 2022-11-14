@@ -17,18 +17,18 @@ class AppointmentController extends Controller
     public function index(Request $request)
     {   
         $clinical_services = ClinicalService::all();
-        $search_by_date = $request->input('search_by_date');
+        $date = $request->input('date');
         $clinical_service = $request->input('clinical_service');
-        if ($search_by_date && $clinical_service) {
-            $appointments = Appointment::where([['clinical_service_id', $clinical_service], ['appointment_date', $search_by_date]])->with('clinical_service', 'clinical_service.department')->paginate(100);
-        } elseif ($search_by_date) {
-            $appointments = Appointment::where('appointment_date', $search_by_date)->paginate(100);
+        if ($date && $clinical_service) {
+            $appointments = Appointment::where([['clinical_service_id', $clinical_service], ['appointment_date', $date]])->with('clinical_service', 'clinical_service.department')->paginate(100);
+        } elseif ($date) {
+            $appointments = Appointment::where('appointment_date', $date)->paginate(100);
         } elseif ($clinical_service) {
             $appointments = Appointment::where('clinical_service_id', $clinical_service)->with('clinical_service')->paginate(100);
         } else {
             $appointments = Appointment::paginate(15);
         }
-        return view('appointments.index', compact('appointments', "clinical_services"));
+        return view('appointments.index', compact('appointments', "clinical_services", 'date'));
     }
 
     /**

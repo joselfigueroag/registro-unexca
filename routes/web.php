@@ -62,9 +62,10 @@ Route::controller(AppointmentController::class)->middleware('auth')->group(funct
 });
 
 Route::controller(SpecialistController::class)->middleware('auth')->group(function(){
-   Route::get('/specialists','index')->name('specialist_index');
-   Route::get('/specialists/create','create')->name('register_specialists');
-   Route::post('/specialists','store')->name('registered_specialists');
-   Route::get('/specialists/{id}' , 'show')->name('show_specialist');
-   Route::get('/specialists/{id}/delete','destroy')->name('delete_specialist');
+    Route::get('/specialists','index')->name('specialist_index');
+    Route::get('/specialists/create','create')->name('register_specialists');
+    Route::post('/specialists','store')->name('registered_specialists');
+    Route::get('/specialists/{id}' , 'show')->name('show_specialist');
+    Route::get('/specialists/{id}/delete','destroy')->name('delete_specialist');
+});
 });
