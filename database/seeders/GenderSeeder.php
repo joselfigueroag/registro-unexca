@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Gender;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
-class RoleAndPermissionSeeder extends Seeder
+class GenderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,10 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run()
     {
-        $roles = ['admin', 'receptionist', 'specialist'];
+        $genders = ['Femenino', 'Masculino'];
 
-        foreach ($roles as $role){
-            Role::create(['name' => "$role"]);
+        foreach ($genders as $gender){
+            Gender::create(['type'=>"$gender"]);
         }
     }
 }

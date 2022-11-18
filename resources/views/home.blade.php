@@ -11,7 +11,7 @@
                             @hasrole('admin')
                                 <div class="dropdown mb-3">
                                     <a class="col-12 btn btn-primary" href="{{ route('list_users') }}">
-                                        Empleados
+                                        Usuarios
                                     </a>
                                 </div>
                                 <div class="dropdown mb-3">
@@ -38,14 +38,16 @@
                                         href="/deleted_records">Registros Eliminados</a>
                                 </div>
                             @endhasrole
-                            <div class="dropdown mb-3">
-                                <a class="col-12 btn btn-primary" type="button"
+                            @hasrole(['receptionist', 'admin'])
+                                <div class="dropdown mb-3">
+                                    <a class="col-12 btn btn-primary" type="button"
                                     href="/patients">Pacientes</a>
-                            </div>
-                            <div class="dropdown mb-3">
-                                <a class="col-12 btn btn-primary" type="button"
+                                </div>
+                                <div class="dropdown mb-3">
+                                    <a class="col-12 btn btn-primary" type="button"
                                     href="{{ route('list_appointments') }}">Citas</a>
-                            </div>
+                                </div>
+                            @endhasrole
                         </div>
                         <div class="col-6 text-center">
                             <div>

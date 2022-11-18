@@ -10,11 +10,12 @@
             <div class="col-4">
                 <p><span class="fw-bold">Primer Nombre:</span> {{ $patient->first_name }}</p>
                 <p><span class="fw-bold">Segundo Nombre:</span> {{ $patient->second_name }}</p>
-                <p><span class="fw-bold">Genero:</span> {{ $patient->gender }}</p>
+                <p><span class="fw-bold">Genero:</span> {{ $patient->gender->type }}</p>
             </div>
             <div class="col-4">
                 <p><span class="fw-bold">Primer Apellido:</span> {{ $patient->first_surname }}</p>
                 <p><span class="fw-bold">Segundo Apellido:</span> {{ $patient->second_surname }}</p>
+                <p><span class="fw-bold">Estado Civil:</span> {{ $patient->civil_status->type }}</p>
             </div>
             <div class="col-4">
                 <p><span class="fw-bold">Fecha de Nacimiento:</span> {{ $patient->birthday_date }}</p>
@@ -52,12 +53,15 @@
         <hr size="10" class="mt-3">
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#appointmentFromPatientModal">
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
+            data-bs-target="#appointmentFromPatientModal">
             Nueva cita
         </button>
 
         <!-- Modal -->
-        <div class="modal fade" id="appointmentFromPatientModal" tabindex="-1" aria-labelledby="appointmentFromPatientModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal fade" id="appointmentFromPatientModal" tabindex="-1"
+            aria-labelledby="appointmentFromPatientModalLabel" aria-hidden="true" data-bs-backdrop="static"
+            data-bs-keyboard="false">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -135,14 +139,14 @@
     servicios = @json($clinical_services);
     console.log(servicios);
 
-    function load_services(obj){
+    function load_services(obj) {
         //document.getElementById('clinical_service').options.length=0;
         document.getElementById('clinical_service').disabled = false;
-        var x=1;
-        for (var i=0; i < servicios.length;i++){
-            if (servicios[i].department_id == obj.value){
-            document.getElementById('clinical_service').options[x]=new Option(servicios[i].name, servicios[i].id);
-            x++;
+        var x = 1;
+        for (var i = 0; i < servicios.length; i++) {
+            if (servicios[i].department_id == obj.value) {
+                document.getElementById('clinical_service').options[x] = new Option(servicios[i].name, servicios[i].id);
+                x++;
             }
         }
         console.log(obj.value);

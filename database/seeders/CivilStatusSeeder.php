@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\CivilStatus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
-class RoleAndPermissionSeeder extends Seeder
+class CivilStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,10 @@ class RoleAndPermissionSeeder extends Seeder
      */
     public function run()
     {
-        $roles = ['admin', 'receptionist', 'specialist'];
+        $types = ['Soltero/a', 'Casado/a', 'Separado/a', 'Divorciado/a', 'Viudo/a'];
 
-        foreach ($roles as $role){
-            Role::create(['name' => "$role"]);
+        foreach ($types as $type){
+            CivilStatus::create(['type'=>"$type"]);
         }
     }
 }

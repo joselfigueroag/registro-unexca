@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PatientRequest;
 use App\Models\ContactInfo;
 use App\Models\Appointment;
+use App\Models\CivilStatus;
 use App\Models\ClinicalService;
 use App\Models\Department;
 use App\Models\Patient;
@@ -43,8 +44,9 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('patients.register');
+    {   
+        $civil_status = CivilStatus::all();
+        return view('patients.register', compact('civil_status'));
     }
 
     /**
@@ -60,10 +62,11 @@ class PatientController extends Controller
         $patient->second_name = ucwords($request['second_name']);
         $patient->first_surname = ucwords($request['first_surname']);
         $patient->second_surname = ucwords($request['second_surname']);
-        $patient->gender = $request['gender'];
+        $patient->gender_id = $request['gender'];
         $patient->identification_number = $request['identification_number'];
         $patient->birthday_date = $request['birthday_date'];
         $patient->clinic_history = generateClinicHistory($patient);
+        $patient->civil_status_id = $request['civil_status'];
         $patient->save();
         
         $contact_info = new ContactInfo;
@@ -101,7 +104,8 @@ class PatientController extends Controller
     public function edit($id)
     {
         $patient = Patient::find($id=$id);
-        return view('patients.edit', compact('patient'));
+        $civil_status = CivilStatus::all();
+        return view('patients.edit', compact('patient', 'civil_status'));
     }
 
     /**
@@ -113,13 +117,18 @@ class PatientController extends Controller
      */
     public function update(PatientRequest $request, $id)
     {
+        $data = $request->all();
+        
         $patient = Patient::find($id);
-        $patient->fill($request->all());
+        $patient['gender_id'] = $data['gender'];
+        $patient['civil_status_id'] = $data['civil_status'];
+        $patient->fill($data);
         $patient->save();
         
-        $addit_info = $patient->additional_info;
-        $addit_info->fill($request->all());
-        $addit_info->save();
+        $contact_info = $patient->contact_info;
+        $contact_info->fill($data);
+        $contact_info->save();
+
         return redirect()->action([PatientController::class, 'show'], ['id' => $patient->id]);
     }
 
@@ -133,6 +142,7 @@ class PatientController extends Controller
     {
         $patient = Patient::find($id);
         $appointments = Appointment::where('patient_id', $patient->id)->get();
+        
         $patient->delete();
         $appointments->each->delete();
         return redirect()->action([PatientController::class, 'index']);

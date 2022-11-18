@@ -57,18 +57,27 @@
                         <div class="error-message">{{ $errors->first('birthday_date') }}</div>
                     @endif
                 </div>
+                <div class="form-group mb-3 custom-div">
+                    <label for="civil_status">Estado Civil</label>
+                    <select name="civil_status" id="civil_status" onchange="load_services(this);">
+                        <option selected value="" hidden>Seleccionar</option>
+                        @foreach ($civil_status as $status)
+                            <option value="{{ $status->id }}">{{ $status->type }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group custom-div">
                     <label>Genero</label>
                     <div class="d-flex">
                         <div class="form-check me-5">
                             <input type="radio" class="form-check-input" name="gender" class="custom-control-input"
-                                value="M" {{ old('gender') == 'M' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="genderM">M</label>
+                                value="1" {{ old('gender') == '1' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="genderF">Femenino</label>
                         </div>
                         <div class="form-check me-5">
                             <input type="radio" class="form-check-input" name="gender" class="custom-control-input"
-                                value="F" {{ old('gender') == 'F' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="genderF">F</label>
+                                value="2" {{ old('gender') == '2' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="genderM">Masculino</label>
                         </div>
                     </div>
                     @if ($errors->has('gender'))
@@ -90,14 +99,16 @@
                 </div>
                 <div class="form-group custom-div">
                     <label for="cellphone_number">Numero de celular</label>
-                    <input type="text" class="form-control" name="cellphone_number" maxlength="11" value="{{ old('cellphone_number') }}">
+                    <input type="text" class="form-control" name="cellphone_number" maxlength="11"
+                        value="{{ old('cellphone_number') }}">
                     @if ($errors->has('cellphone_number'))
                         <div class="error-message">{{ $errors->first('cellphone_number') }}</div>
                     @endif
                 </div>
                 <div class="form-group custom-div">
                     <label for="local_number">Numero local</label>
-                    <input type="text" class="form-control" name="local_number" maxlength="11" value="{{ old('local_number') }}">
+                    <input type="text" class="form-control" name="local_number" maxlength="11"
+                        value="{{ old('local_number') }}">
                     @if ($errors->has('local_number'))
                         <div class="error-message">{{ $errors->first('local_number') }}</div>
                     @endif
