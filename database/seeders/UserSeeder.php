@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -15,31 +16,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = User::create([
-            'name' => 'Admin',
-            'user' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('12345678'),
-            'email_verified_at' => now()
-        ]);
-        $admin->assignRole('admin');
+        $roles = Role::all();
 
-        $employee = User::create([
-            'name' => 'Employee',
-            'user' => 'employee',
-            'email' => 'employee@employee.com',
-            'password' => bcrypt('12345678'),
-            'email_verified_at' => now()
-        ]);
-        $employee->assignRole('employee');
-
-        $specialist = User::create([
-            'name' => 'Specialist',
-            'user' => 'specialist',
-            'email' => 'specialist@specialist.com',
-            'password' => bcrypt('12345678'),
-            'email_verified_at' => now()
-        ]);
-        $specialist->assignRole('specialist');
+        foreach ($roles as $role){
+            $rol_name = $role->name; 
+            $user = User::create([
+                'user' => $rol_name,
+                'email' => "$rol_name"."@"."$rol_name".".com",
+                'password' => bcrypt('12345678'),
+                'email_verified_at' => now(),
+            ]);
+            $user->assignRole("$rol_name");
+        }
     }
 }
