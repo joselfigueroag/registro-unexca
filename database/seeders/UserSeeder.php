@@ -32,5 +32,14 @@ class UserSeeder extends Seeder
             'email_verified_at' => now()
         ]);
         $employee->assignRole('employee');
+
+        $specialist = User::create([
+            'name' => 'Specialist',
+            'user' => 'specialist',
+            'email' => 'specialist@specialist.com',
+            'password' => bcrypt('12345678'),
+            'email_verified_at' => now()
+        ]);
+        $specialist->assignRole('specialist');
     }
 }

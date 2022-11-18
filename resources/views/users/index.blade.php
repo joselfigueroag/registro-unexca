@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="d-flex col-sm-2 mt-2 ">
-                <a class="btn btn-primary" name="add" type="button" href="{{ route('register') }}" style="margin-left: auto;">Nuevo
+                <a class="btn btn-primary" name="add" type="button" href="{{ route('register_user') }}" style="margin-left: auto;">Nuevo
                     Registro</a>
             </div>
         </div>
