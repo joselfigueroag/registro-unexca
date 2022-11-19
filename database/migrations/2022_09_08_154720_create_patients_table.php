@@ -39,12 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists("DROP TABLE if exists patients cascade");
-        // DB::drop("DROP TABLE if exists patients cascade");
-        // Schema::table('patients', function (Blueprint $table) {
-        //     $table->drop();
-        // });
-        // Schema::disableForeignKeyConstraints();
-        // Schema::dropIfExists('patients');
+        Schema::dropIfExists("DROP TABLE if exists patients cascade");
     }
 };

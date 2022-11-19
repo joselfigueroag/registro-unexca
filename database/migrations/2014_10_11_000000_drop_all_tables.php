@@ -13,11 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('civil_status', function (Blueprint $table) {
-            $table->id();
-            $table->string('type', 15);
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -27,6 +23,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists("DROP TABLE if exists civil_status cascade");
+        Schema::dropIfExists('contact_info');
+        Schema::dropIfExists('patients');
+        Schema::dropIfExists('genders');
+        Schema::dropIfExists('civil_status');
     }
 };
