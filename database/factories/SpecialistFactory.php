@@ -30,7 +30,7 @@ class SpecialistFactory extends Factory
             'second_surname' => fake()->text(10),
             'identification_number' => fake()->randomNumber(8),
             'birthday_date' => fake()->date(),
-            'gender' => fake()->randomElement(['M', 'F']),
+            //'gender' => fake()->randomElement(['M', 'F']),
             // 'email' => fake()->safeEmail(),
             'clinical_service_id' => $clinical_service->id,
             'address' => fake()->address(),

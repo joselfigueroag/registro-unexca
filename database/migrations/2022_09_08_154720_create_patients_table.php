@@ -19,9 +19,14 @@ return new class extends Migration
             $table->string('second_name', 20)->nullable();
             $table->string('first_surname', 20);
             $table->string('second_surname', 20)->nullable();
-            $table->string('identification_number', 8)->unique();
+            $table->string('identification_number', 8)->nullable();
             $table->date('birthday_date');
-            $table->enum('gender', ['M', 'F']);
+            $table->string('clinic_history', 15)->unique();
+            $table->unsignedBigInteger('gender_id')->nullable();
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
+            $table->unsignedBigInteger('civil_status_id')->nullable();
+            $table->foreign('civil_status_id')->references('id')->on('civil_status')->onDelete('set null');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

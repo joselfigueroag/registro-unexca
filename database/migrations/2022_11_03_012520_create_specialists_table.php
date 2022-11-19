@@ -22,11 +22,13 @@ return new class extends Migration
             $table->string('second_surname', 20)->nullable();
             $table->string('identification_number', 8)->unique();
             $table->date('birthday_date');
-            $table->enum('gender', ['M', 'F']);
+            //$table->enum('gender', ['M', 'F']);
             $table->string('email', 20)->nullable();
             $table->char('address', 100)->nullable();
-            $table->timestamps();
             $table->foreign('clinical_service_id')->references('id')->on('clinical_services')->onDelete('cascade');
+            $table->unsignedBigInteger('gender_id')->nullable();
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
+            $table->timestamps();
         });
     }
 

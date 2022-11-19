@@ -59,7 +59,7 @@ class SpecialistController extends Controller
     public function show(Specialist $specialist, $id)
     {
         $specialist = $specialist::find($id);
-        return view('specialists.show', compact('specialist'));
+        return view('specialists.show-2', compact('specialist'));
         //return $specialist;
     }
 
