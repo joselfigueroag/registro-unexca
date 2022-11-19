@@ -27,6 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genders');
+        Schema::dropIfExists("DROP TABLE if exists genders cascade");
+        // Schema::dropIfExists('genders');
     }
 };

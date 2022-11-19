@@ -27,6 +27,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('civil_state');
+        Schema::dropIfExists("DROP TABLE if exists civil_status cascade");
+        // Schema::dropIfExists('civil_status');
     }
 };
