@@ -27,5 +27,10 @@ return new class extends Migration
         Schema::dropIfExists('patients');
         Schema::dropIfExists('genders');
         Schema::dropIfExists('civil_status');
+        Schema::dropIfExists('parishes');
+        Schema::dropIfExists('municipalities');
+        Schema::dropIfExists('capitals');
+        Schema::dropIfExists('states');
+        Schema::dropIfExists('countries');
     }
 };

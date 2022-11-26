@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientRequest;
-use App\Models\ContactInfo;
 use App\Models\Appointment;
 use App\Models\CivilStatus;
 use App\Models\ClinicalService;
+use App\Models\ContactInfo;
+use App\Models\Country;
 use App\Models\Department;
 use App\Models\Patient;
 use Illuminate\Http\Request;
@@ -46,7 +47,10 @@ class PatientController extends Controller
     public function create()
     {   
         $civil_status = CivilStatus::all();
-        return view('patients.register', compact('civil_status'));
+        $countries = Country::with(
+            'states', 'states.capital', 'states.capital.municipalities', 'states.capital.municipalities.parishes'
+        )->get();
+        return view( 'patients.register', compact('civil_status', 'countries'));
     }
 
     /**
@@ -55,7 +59,7 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PatientRequest $request)
+    public function store(Request $request)
     {   
         $patient = new Patient;
         $patient->first_name = ucwords($request['first_name']);
@@ -72,10 +76,11 @@ class PatientController extends Controller
         $contact_info = new ContactInfo;
         $contact_info->patient_id = $patient->id;
         $contact_info->email = $request['email'];
-        $contact_info->address_1 = $request['address_1'];
-        $contact_info->address_2 = $request['address_2'];
+        $contact_info->principal_address = $request['principal_address'];
+        $contact_info->secondary_address = $request['secondary_address'];
         $contact_info->cellphone_number = $request['cellphone_number'];
         $contact_info->local_number = $request['local_number'];
+        $contact_info->parish_id = $request['parish'];
         $contact_info->save();
 
         return redirect()->action([PatientController::class, 'index']);
@@ -115,7 +120,7 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(PatientRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         

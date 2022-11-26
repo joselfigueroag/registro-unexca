@@ -15,8 +15,16 @@ class Patient extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'clinic_history', 'first_name', 'second_name', 'first_surname', 'second_surname', 
-        'identification_number', 'birthday_date', 'civil_status_id', 'gender_id'];
+        'gender_id',
+        'civil_status_id',
+        'first_name',
+        'second_name',
+        'first_surname',
+        'second_surname', 
+        'birthday_date',
+        'identification_number',
+        'clinic_history',
+    ];
 
     protected $hidden = ['id'];
 

@@ -16,13 +16,15 @@ return new class extends Migration
         Schema::create('contact_info', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('patient_id');
-            $table->char('primary_address', 100);
-            $table->char('secondary_address', 100)->nullable();
+            $table->unsignedBigInteger('parish_id')->nullable();
             $table->string('email', 50)->nullable();
             $table->string('cellphone_number', 15)->nullable();
             $table->string('local_number', 15)->nullable();
+            $table->char('principal_address', 100);
+            $table->char('secondary_address', 100)->nullable();
             $table->timestamps();
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreign('parish_id')->references('id')->on('parishes')->onDelete('set null');
         });
     }
 

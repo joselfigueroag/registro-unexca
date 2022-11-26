@@ -11,7 +11,15 @@ class ContactInfo extends Model
 
     protected $table = 'contact_info';
 
-    protected $fillable = ['patient_id', 'address_1', 'address_2', 'email', 'cellphone_number', 'local_number'];
+    protected $fillable = [
+        'patient_id',
+        'parish_id',
+        'email',
+        'cellphone_number',
+        'local_number',
+        'principal_address',
+        'secondary_address',
+    ];
 
     protected $hidden = ['id'];
 }

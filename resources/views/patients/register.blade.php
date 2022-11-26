@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <form class="p-3 border border-primary rounded" action="/patients/create" method="POST">
+        <form class="p-3 border border-primary rounded" action="/patients" method="POST">
             @csrf
             <div class="d-flex justify-content-between">
                 <h3><u>Informacion personal</u></h3>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group mb-3 custom-div">
                     <label for="civil_status">Estado Civil</label>
-                    <select name="civil_status" id="civil_status" onchange="load_services(this);">
+                    <select name="civil_status" id="civil_status">
                         <option selected value="" hidden>Seleccionar</option>
                         @foreach ($civil_status as $status)
                             <option value="{{ $status->id }}">{{ $status->type }}</option>
@@ -114,25 +114,107 @@
                     @endif
                 </div>
             </div>
+            <hr size="10" class="mt-0">
+            <div class="d-flex justify-content-between">
+                <h3><u>Direccion</u></h3>
+            </div>
+            <div class="form-row d-flex justify-content-between mb-3">
+                <div class="form-group mb-3 custom-div-dir-structure">
+                    <label for="country">Pais</label>
+                    <select name="country" id="country">
+                        <option selected value="" hidden>Seleccionar</option>
+                        @foreach ($countries as $country)
+                            <option value="">{{ $country->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('country'))
+                        <div class="error-message">{{ $errors->first('country') }}</div>
+                    @endif
+                </div>
+                <div class="form-group mb-3 custom-div-dir-structure">
+                    <label for="state">Estado</label>
+                    <select name="state" id="state">
+                        <option selected value="" hidden>Seleccionar</option>
+                        @foreach ($countries as $country)
+                            @foreach ($country->states as $state)
+                                <option value="">{{ $state->name }}</option>
+                            @endforeach
+                        @endforeach
+                    </select>
+                    @if ($errors->has('state'))
+                        <div class="error-message">{{ $errors->first('state') }}</div>
+                    @endif
+                </div>
+                <div class="form-group mb-3 custom-div-dir-structure">
+                    <label for="capital">Capital</label>
+                    <select name="capital" id="capital">
+                        <option selected value="" hidden>Seleccionar</option>
+                        @foreach ($countries as $country)
+                            @foreach ($country->states as $state)
+                                <option value="">{{ $state->capital->name }}</option>
+                            @endforeach
+                        @endforeach
+                    </select>
+                    @if ($errors->has('capital'))
+                        <div class="error-message">{{ $errors->first('capital') }}</div>
+                    @endif
+                </div>
+                <div class="form-group mb-3 custom-div-dir-structure">
+                    <label for="municipality">Municipio</label>
+                    <select name="municipality" id="municipality">
+                        <option selected value="" hidden>Seleccionar</option>
+                        @foreach ($countries as $country)
+                            @foreach ($country->states as $state)
+                                @foreach ($state->capital->municipalities as $municipality)
+                                    <option value="">{{ $municipality->name }}</option>
+                                @endforeach
+                            @endforeach
+                        @endforeach
+                    </select>
+                    @if ($errors->has('municipality'))
+                        <div class="error-message">{{ $errors->first('municipality') }}</div>
+                    @endif
+                </div>
+                <div class="form-group mb-3 custom-div-dir-structure">
+                    <label for="parish">Parroquia</label>
+                    <select name="parish" id="parish">
+                        <option selected value="" hidden>Seleccionar</option>
+                        @foreach ($countries as $country)
+                            @foreach ($country->states as $state)
+                                @foreach ($state->capital->municipalities as $municipality)
+                                    @foreach ($municipality->parishes as $parish)
+                                        <option value="{{ $parish->id }}">{{ $parish->name }}</option>
+                                    @endforeach
+                                @endforeach
+                            @endforeach
+                        @endforeach
+                    </select>
+                    @if ($errors->has('parish'))
+                        <div class="error-message">{{ $errors->first('parish') }}</div>
+                    @endif
+                </div>
+            </div>
             <div class="form-row d-flex justify-content-between mb-3">
                 <div class="col-5 form-group">
-                    <label for="address_1">Direccion 1</label>
-                    <input type="text" class="form-control" name="address_1" value="{{ old('address_1') }}">
-                    @if ($errors->has('address_1'))
-                        <div class="error-message">{{ $errors->first('address_1') }}</div>
+                    <label for="principal_address">Direccion Principal</label>
+                    <input type="text" class="form-control" name="principal_address"
+                        value="{{ old('principal_address') }}">
+                    @if ($errors->has('principal_address'))
+                        <div class="error-message">{{ $errors->first('principal_address') }}</div>
                     @endif
                 </div>
                 <div class="col-5 form-group">
-                    <label for="address_2">Direccion 2</label>
-                    <input type="text" class="form-control" name="address_2" value="{{ old('address_2') }}">
-                    @if ($errors->has('address_2'))
-                        <div class="error-message">{{ $errors->first('address_2') }}</div>
+                    <label for="secondary_address">Direccion Secundaria</label>
+                    <input type="text" class="form-control" name="secondary_address"
+                        value="{{ old('secondary_address') }}">
+                    @if ($errors->has('secondary_address'))
+                        <div class="error-message">{{ $errors->first('secondary_address') }}</div>
                     @endif
                 </div>
             </div>
             <hr size="10" class="mt-0">
             <div class="d-flex justify-content-between">
-                <h3><u>Datos medicos</u></h3>
+                <h3><u>Informacion Medica General</u></h3>
             </div>
             <hr size="10" class="mt-0">
             <div class="d-flex justify-content-end">

@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('capitals');
+        Schema::dropIfExists("DROP TABLE if exists capitals cascade");
     }
 };

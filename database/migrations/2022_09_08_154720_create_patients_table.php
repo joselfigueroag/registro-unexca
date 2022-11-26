@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('second_name', 20)->nullable();
             $table->string('first_surname', 20);
             $table->string('second_surname', 20)->nullable();
+            $table->date('birthday_date');
             $table->string('identification_number', 15)->nullable();
             $table->string('clinic_history', 15)->unique();
-            $table->date('birthday_date');
             $table->timestamps();
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
             $table->foreign('civil_status_id')->references('id')->on('civil_status')->onDelete('set null');

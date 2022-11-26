@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parishes');
+        Schema::dropIfExists("DROP TABLE if exists parishes cascade");
     }
 };
