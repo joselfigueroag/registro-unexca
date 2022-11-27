@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientRequest;
 use App\Models\Appointment;
+use App\Models\Capital;
 use App\Models\CivilStatus;
 use App\Models\ClinicalService;
 use App\Models\ContactInfo;
 use App\Models\Country;
 use App\Models\Department;
+use App\Models\Municipality;
+use App\Models\Parish;
 use App\Models\Patient;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -47,10 +51,22 @@ class PatientController extends Controller
     public function create()
     {   
         $civil_status = CivilStatus::all();
-        $countries = Country::with(
-            'states', 'states.capital', 'states.capital.municipalities', 'states.capital.municipalities.parishes'
-        )->get();
-        return view( 'patients.register', compact('civil_status', 'countries'));
+        $countries = Country::all();
+        $states = State::all();
+        $capitals = Capital::all();
+        $municipalities = Municipality::all();
+        $parishes = Parish::all();
+        return view(
+            'patients.register',
+            compact(
+                'civil_status',
+                'countries',
+                'states',
+                'capitals',
+                'municipalities',
+                'parishes',
+            )
+        );
     }
 
     /**

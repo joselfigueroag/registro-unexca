@@ -10,9 +10,7 @@ class State extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'country_id'];
-
-    protected $hidden = ['id'];
+    protected $fillable = ['id', 'name', 'country_id'];
 
     public function capital()
     {

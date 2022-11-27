@@ -10,9 +10,7 @@ class Municipality extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'capital_id'];
-
-    protected $hidden = ['id'];
+    protected $fillable = ['id', 'name', 'capital_id'];
 
     public function parishes()
     {
