@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PatientRequest;
 use App\Models\Appointment;
+use App\Models\BloodType;
 use App\Models\Capital;
 use App\Models\CivilStatus;
 use App\Models\ClinicalService;
@@ -51,6 +52,7 @@ class PatientController extends Controller
     public function create()
     {   
         $civil_status = CivilStatus::all();
+        $blood_types = BloodType::all();
         $countries = Country::all();
         $states = State::all();
         $capitals = Capital::all();
@@ -60,6 +62,7 @@ class PatientController extends Controller
             'patients.register',
             compact(
                 'civil_status',
+                'blood_types',
                 'countries',
                 'states',
                 'capitals',

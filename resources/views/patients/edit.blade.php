@@ -60,8 +60,8 @@
                 </div>
                 <div class="form-group mb-3 custom-div">
                     <label for="civil_status">Estado Civil</label>
-                    <select name="civil_status" id="civil_status" onchange="load_services(this);">
-                        <option selected value="" hidden>{{ $patient->civil_status->type }}</option>
+                    <select name="civil_status" id="civil_status">
+                        <option selected value="{{$patient->civil_status ? $patient->civil_status->id : ''}}" hidden>{{ $patient->civil_status ? $patient->civil_status->type : 'Seleccionar' }}</option>
                         @foreach ($civil_status as $status)
                             <option value="{{ $status->id }}">{{ $status->type }}</option>
                         @endforeach
@@ -119,19 +119,19 @@
             </div>
             <div class="form-row d-flex justify-content-between mb-3">
                 <div class="col-4 form-group">
-                    <label for="address_1">Direccion 1</label>
-                    <input type="text" class="form-control" name="address_1"
-                        value="{{ $patient->contact_info->address_1 }}">
-                    @if ($errors->has('address_1'))
-                        <div class="error-message">{{ $errors->first('address_1') }}</div>
+                    <label for="principal_address">Direccion 1</label>
+                    <input type="text" class="form-control" name="principal_address"
+                        value="{{ $patient->contact_info->principal_address }}">
+                    @if ($errors->has('principal_address'))
+                        <div class="error-message">{{ $errors->first('principal_address') }}</div>
                     @endif
                 </div>
                 <div class="col-4 form-group">
-                    <label for="address_2">Direccion 2</label>
-                    <input type="text" class="form-control" name="address_2"
-                        value="{{ $patient->contact_info->address_2 }}">
-                    @if ($errors->has('address_2'))
-                        <div class="error-message">{{ $errors->first('address_2') }}</div>
+                    <label for="secondary_address">Direccion 2</label>
+                    <input type="text" class="form-control" name="secondary_address"
+                        value="{{ $patient->contact_info->secondary_address }}">
+                    @if ($errors->has('secondary_address'))
+                        <div class="error-message">{{ $errors->first('secondary_address') }}</div>
                     @endif
                 </div>
             </div>

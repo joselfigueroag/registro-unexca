@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CivilStatusSeeder::class,
             GenderSeeder::class,
             RoleAndPermissionSeeder::class,
+            BloodTypeSeeder::class,
             UserSeeder::class,
             StructuredDirectionSeeder::class,
             DepartmentAndClinicalServiceSeeder::class,

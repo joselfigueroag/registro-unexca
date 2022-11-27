@@ -15,7 +15,7 @@
             <div class="col-4">
                 <p><span class="fw-bold">Primer Apellido:</span> {{ $patient->first_surname }}</p>
                 <p><span class="fw-bold">Segundo Apellido:</span> {{ $patient->second_surname }}</p>
-                <p><span class="fw-bold">Estado Civil:</span> {{ $patient->civil_status->type }}</p>
+                <p><span class="fw-bold">Estado Civil:</span> {{ $patient->civil_status ? $patient->civil_status->type : '' }}</p>
             </div>
             <div class="col-4">
                 <p><span class="fw-bold">Fecha de Nacimiento:</span> {{ $patient->birthday_date }}</p>
@@ -28,14 +28,43 @@
         <div class="d-flex border p-2 mb-3">
             <div class="col-4">
                 <p><span class="fw-bold">Correo:</span> {{ $patient->contact_info->email }}</p>
-                <p><span class="fw-bold">Direccion 1:</span> {{ $patient->contact_info->address_1 }}</p>
             </div>
             <div class="col-4">
                 <p><span class="fw-bold">Numero Celular:</span> {{ $patient->contact_info->cellphone_number }}</p>
-                <p><span class="fw-bold">Direccion 2:</span> {{ $patient->contact_info->address_2 }}</p>
             </div>
             <div class="col-4">
                 <p><span class="fw-bold">Numero Local:</span> {{ $patient->contact_info->local_number }}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <h3><u>Direccion</u></h3>
+        </div>
+        <div class="d-flex border p-2 mb-3">
+            @php
+            $parish = $patient->contact_info->parish;
+            @endphp
+            <div class="col-4">
+                <p><span class="fw-bold">Pais:</span>
+                    {{  $parish ? $parish->municipality->capital->state->country->name : '' }}
+                </p>
+                <p><span class="fw-bold">Estado:</span>
+                    {{ $parish ?  $parish->municipality->capital->state->name : '' }}
+                </p>
+                <p><span class="fw-bold">Capital:</span>
+                    {{ $parish ?  $parish->municipality->capital->name : '' }}
+                </p>
+            </div>
+            <div class="col-4">
+                <p><span class="fw-bold">Municipio:</span>
+                    {{ $parish ?  $parish->municipality->name : '' }}
+                </p>
+                <p><span class="fw-bold">Parroquia:</span>
+                    {{ $parish ?  $parish->name : '' }}
+                </p>
+            </div>
+            <div class="col-4">
+                <p><span class="fw-bold">Direccion Principal:</span> {{ $patient->contact_info->principal_address }}</p>
+                <p><span class="fw-bold">Direccion Secundaria:</span> {{ $patient->contact_info->secondary_address }}</p>
             </div>
         </div>
         <div class="d-flex justify-content-between">
