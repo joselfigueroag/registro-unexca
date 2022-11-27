@@ -7,6 +7,7 @@ use App\Models\Appointment;
 use App\Models\BloodType;
 use App\Models\Gender;
 use App\Models\CivilStatus;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -57,5 +58,19 @@ class Patient extends Model
     public function blood_type()
     {
         return $this->belongsTo(BloodType::class);
+    }
+
+    public function age()
+    {
+        return Carbon::createFromDate($this->birthday_date)->age;
+    }
+
+    public function organ_donor()
+    {
+        if ($this->organ_donor == true){
+            return 'Si';
+        } else {
+            return 'No';
+        }
     }
 }

@@ -15,7 +15,7 @@ class BloodTypeSeeder extends Seeder
      */
     public function run()
     {
-        $groups = ['Tipo A+', 'Tipo A-', 'Tipo B+', 'Tipo B-', 'Tipo AB+', 'Tipo AB-', 'Tipo O+', 'Tipo O-'];
+        $groups = ['A Rh+', 'A Rh-', 'B Rh+', 'B Rh-', 'AB Rh+', 'AB Rh-', 'O Rh+', 'O Rh-', 'Nulo'];
 
         foreach ($groups as $group){
             BloodType::create(['group'=>$group]);
