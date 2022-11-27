@@ -44,7 +44,7 @@
             <div class="form-row d-flex mb-3">
                 <div class="form-group custom-div">
                     <label for="identification_number">Cedula de Identidad</label>
-                    <input type="text" class="form-control" name="identification_number" maxlength="8"
+                    <input type="text" class="form-control" name="identification_number" maxlength="15"
                         value="{{ old('identification_number') }}">
                     @if ($errors->has('identification_number'))
                         <div class="error-message">{{ $errors->first('identification_number') }}</div>
@@ -99,18 +99,18 @@
                     <label>Donador de Organos</label>
                     <div class="d-flex">
                         <div class="form-check me-5">
-                            <input type="radio" class="form-check-input" name="organ_donator" class="custom-control-input"
-                                value="t" {{ old('organ_donator') == 't' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="organ_donatorY">Si</label>
+                            <input type="radio" class="form-check-input" name="organ_donor" class="custom-control-input"
+                                value="t" {{ old('organ_donor') == 't' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="organ_donorY">Si</label>
                         </div>
                         <div class="form-check me-5">
-                            <input type="radio" class="form-check-input" name="organ_donator"
-                                class="custom-control-input" value="t" {{ old('organ_donator') == 't' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="organ_donatorN">No</label>
+                            <input type="radio" class="form-check-input" name="organ_donor"
+                                class="custom-control-input" value="t" {{ old('organ_donor') == 't' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="organ_donorN">No</label>
                         </div>
                     </div>
-                    @if ($errors->has('organ_donator'))
-                        <div class="error-message">{{ $errors->first('organ_donator') }}</div>
+                    @if ($errors->has('organ_donor'))
+                        <div class="error-message">{{ $errors->first('organ_donor') }}</div>
                     @endif
                 </div>
             </div>

@@ -5,7 +5,9 @@ namespace App\Models;
 use App\Models\ContactInfo;
 use App\Models\Appointment;
 use App\Models\BloodType;
+use App\Models\FamilyBackground;
 use App\Models\Gender;
+use App\Models\Habit;
 use App\Models\CivilStatus;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -72,5 +74,20 @@ class Patient extends Model
         } else {
             return 'No';
         }
+    }
+
+    public function habits()
+    {
+        return $this->hasOne(Habit::class);
+    }
+
+    public function family_background()
+    {
+        return $this->hasOne(FamilyBackground::class);
+    }
+
+    public function personal_background()
+    {
+        return $this->hasOne(PersonalBackground::class);
     }
 }

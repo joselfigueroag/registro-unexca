@@ -183,7 +183,25 @@ class PatientController extends Controller
     {
         $patient = Patient::find($id=$id);
         $civil_status = CivilStatus::all();
-        return view('patients.edit', compact('patient', 'civil_status'));
+        $blood_types = BloodType::all();
+        $countries = Country::all();
+        $states = State::all();
+        $capitals = Capital::all();
+        $municipalities = Municipality::all();
+        $parishes = Parish::all();
+        return view(
+            'patients.edit',
+            compact(
+                'patient',
+                'civil_status',
+                'blood_types',
+                'countries',
+                'states',
+                'capitals',
+                'municipalities',
+                'parishes',
+            )
+        );
     }
 
     /**
@@ -197,15 +215,64 @@ class PatientController extends Controller
     {
         $data = $request->all();
         
+        // dd($request);
         $patient = Patient::find($id);
         $patient['gender_id'] = $data['gender'];
         $patient['civil_status_id'] = $data['civil_status'];
+        $patient['organ_donor'] = $data['organ_donor'];
+        $patient['blood_type_id'] = $data['blood_type'];
         $patient->fill($data);
         $patient->save();
         
         $contact_info = $patient->contact_info;
         $contact_info->fill($data);
         $contact_info->save();
+
+        $habits = $patient->habits;
+        $habits->smoker = $request['smoker'] ? $request['smoker'] : 'f';
+        $habits->drink_liquor = $request['drink_liquor'] ? $request['drink_liquor'] : 'f';
+        $habits->use_drugs = $request['use_drugs'] ? $request['use_drugs'] : 'f';
+        $habits->drink_coffee = $request['drink_coffee'] ? $request['drink_coffee'] : 'f';
+        $habits->treatment = $request['treatment'] ? $request['treatment'] : 'f';
+        $habits->training = $request['training'] ? $request['training'] : 'f';
+        $habits->save();
+
+        $family_background = $patient->family_background;
+        $family_background->diabetes_f = $request['diabetes_f'] ? $request['diabetes_f'] : 'f';
+        $family_background->hypertension_f = $request['hypertension_f'] ? $request['hypertension_f'] : 'f';
+        $family_background->allergies_f = $request['allergies_f'] ? $request['allergies_f'] : 'f';
+        $family_background->asthma_f = $request['asthma_f'] ? $request['asthma_f'] : 'f';
+        $family_background->epilepsy_f = $request['epilepsy_f'] ? $request['epilepsy_f'] : 'f';
+        $family_background->obesity_f = $request['obesity_f'] ? $request['obesity_f'] : 'f';
+        $family_background->alcoholism_f = $request['alcoholism_f'] ? $request['alcoholism_f'] : 'f';
+        $family_background->carcinomas_f = $request['carcinomas_f'] ? $request['carcinomas_f'] : 'f';
+        $family_background->heart_disease_f = $request['heart_disease_f'] ? $request['heart_disease_f'] : 'f';
+        $family_background->liver_disease_f = $request['liver_disease_f'] ? $request['liver_disease_f'] : 'f';
+        $family_background->nephropathy_f = $request['nephropathy_f'] ? $request['nephropathy_f'] : 'f';
+        $family_background->psychological_f = $request['psychological_f'] ? $request['psychological_f'] : 'f';
+        $family_background->neurological_f = $request['neurological_f'] ? $request['neurological_f'] : 'f';
+        $family_background->endocrine_f = $request['endocrine_f'] ? $request['endocrine_f'] : 'f';
+        $family_background->hematological_f = $request['hematological_f'] ? $request['hematological_f'] : 'f';
+        $family_background->autoimmune_f = $request['autoimmune_f'] ? $request['autoimmune_f'] : 'f';
+        $family_background->save();
+
+        $personal_background = $patient->personal_background;
+        $personal_background->diabetes_p = $request['diabetes_p'] ? $request['diabetes_p'] : 'f';
+        $personal_background->hypertension_p = $request['hypertension_p'] ? $request['hypertension_p'] : 'f';
+        $personal_background->hiv_p = $request['hiv_p'] ? $request['hiv_p'] : 'f';
+        $personal_background->allergies_p = $request['allergies_p'] ? $request['allergies_p'] : 'f';
+        $personal_background->carcinomas_p = $request['carcinomas_p'] ? $request['carcinomas_p'] : 'f';
+        $personal_background->surgeries_p = $request['surgeries_p'] ? $request['surgeries_p'] : 'f';
+        $personal_background->heart_disease_p = $request['heart_disease_p'] ? $request['heart_disease_p'] : 'f';
+        $personal_background->liver_disease_p = $request['liver_disease_p'] ? $request['liver_disease_p'] : 'f';
+        $personal_background->nephropathy_p = $request['nephropathy_p'] ? $request['nephropathy_p'] : 'f';
+        $personal_background->psychological_p = $request['psychological_p'] ? $request['psychological_p'] : 'f';
+        $personal_background->neurological_p = $request['neurological_p'] ? $request['neurological_p'] : 'f';
+        $personal_background->endocrine_p = $request['endocrine_p'] ? $request['endocrine_p'] : 'f';
+        $personal_background->hematological_p = $request['hematological_p'] ? $request['hematological_p'] : 'f';
+        $personal_background->autoimmune_p = $request['autoimmune_p'] ? $request['autoimmune_p'] : 'f';
+        $personal_background->respiratory_p = $request['respiratory_p'] ? $request['respiratory_p'] : 'f';
+        $personal_background->save();
 
         return redirect()->action([PatientController::class, 'show'], ['id' => $patient->id]);
     }
