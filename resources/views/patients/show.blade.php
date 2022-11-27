@@ -11,15 +11,18 @@
                 <p><span class="fw-bold">Primer Nombre:</span> {{ $patient->first_name }}</p>
                 <p><span class="fw-bold">Segundo Nombre:</span> {{ $patient->second_name }}</p>
                 <p><span class="fw-bold">Genero:</span> {{ $patient->gender->type }}</p>
+                <p><span class="fw-bold">Grupo Sanguineo:</span> {{ $patient->blood_type ? $patient->blood_type->group : '' }}</p>
             </div>
             <div class="col-4">
                 <p><span class="fw-bold">Primer Apellido:</span> {{ $patient->first_surname }}</p>
                 <p><span class="fw-bold">Segundo Apellido:</span> {{ $patient->second_surname }}</p>
                 <p><span class="fw-bold">Estado Civil:</span> {{ $patient->civil_status ? $patient->civil_status->type : '' }}</p>
+                <p><span class="fw-bold">Donador de Organos:</span> {{ $patient->organ_donor() }}</p>
             </div>
             <div class="col-4">
                 <p><span class="fw-bold">Fecha de Nacimiento:</span> {{ $patient->birthday_date }}</p>
                 <p><span class="fw-bold">Cedula de Identidad:</span> {{ $patient->identification_number }}</p>
+                <p><span class="fw-bold">Edad:</span> {{ $patient->age() }}</p>
             </div>
         </div>
         <div class="d-flex justify-content-between">

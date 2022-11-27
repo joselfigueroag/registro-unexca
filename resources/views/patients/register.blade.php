@@ -87,7 +87,7 @@
             </div>
             <div class="form-row d-flex mb-3">
                 <div class="form-group custom-div">
-                    <label for="blood_type">Tipo de Sangre</label>
+                    <label for="blood_type">Grupo Sanguineo</label>
                     <select name="blood_type" id="blood_type">
                         <option selected value="" hidden>Seleccionar</option>
                         @foreach ($blood_types as $blood_type)
@@ -385,10 +385,10 @@
                                 value="{{ 'checked' ? 't' : 'f' }}">
                         </div>
                         <div class="form-check custom-div">
-                            <label class="form-check-label" for="neurological_">
+                            <label class="form-check-label" for="neurological_f">
                                 Enf. Neurologicas
                             </label>
-                            <input class="form-check-input" type="checkbox" name="neurological_" id="neurological_"
+                            <input class="form-check-input" type="checkbox" name="neurological_f" id="neurological_f"
                                 value="{{ 'checked' ? 't' : 'f' }}">
                         </div>
                         <div class="form-check custom-div">
