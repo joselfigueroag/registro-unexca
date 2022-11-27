@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\ContactInfo;
 use App\Models\Appointment;
+use App\Models\BloodType;
 use App\Models\Gender;
 use App\Models\CivilStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -51,5 +52,10 @@ class Patient extends Model
     public function civil_status()
     {
         return $this->belongsTo(CivilStatus::class);
+    }
+
+    public function blood_type()
+    {
+        return $this->belongsTo(BloodType::class);
     }
 }

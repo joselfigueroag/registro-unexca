@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Capital;
 use App\Models\Parish;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,5 +16,10 @@ class Municipality extends Model
     public function parishes()
     {
         return $this->hasMany(Parish::class);
+    }
+
+    public function capital()
+    {
+        return $this->belongsTo(Capital::class);
     }
 }

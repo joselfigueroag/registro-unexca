@@ -11,7 +11,7 @@ class CivilStatus extends Model
 
     protected $table = 'civil_status';
 
-    protected $filiable = ['name'];
+    protected $filiable = ['type'];
 
     protected $hidden = ['id'];
 }

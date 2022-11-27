@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Parish;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,4 +23,9 @@ class ContactInfo extends Model
     ];
 
     protected $hidden = ['id'];
+
+    public function parish()
+    {
+        return $this->belongsTo(Parish::class);
+    }
 }
