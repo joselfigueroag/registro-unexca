@@ -18,16 +18,19 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('gender_id')->nullable();
             $table->unsignedBigInteger('civil_status_id')->nullable();
+            $table->unsignedBigInteger('blood_type_id')->nullable();
             $table->string('first_name', 20);
             $table->string('second_name', 20)->nullable();
             $table->string('first_surname', 20);
             $table->string('second_surname', 20)->nullable();
             $table->date('birthday_date');
-            $table->string('identification_number', 15)->nullable();
+            $table->string('identification_number', 15)->unique();
             $table->string('clinic_history', 15)->unique();
+            $table->boolean('organ_donor')->default(false);
             $table->timestamps();
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('set null');
             $table->foreign('civil_status_id')->references('id')->on('civil_status')->onDelete('set null');
+            $table->foreign('blood_type_id')->references('id')->on('blood_types')->onDelete('set null');
             $table->softDeletes();
         });
     }

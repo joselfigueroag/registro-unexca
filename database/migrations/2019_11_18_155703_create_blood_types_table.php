@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clinical_services', function (Blueprint $table) {
+        Schema::create('blood_types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('department_id');
-            $table->string('name', 100);
+            $table->string('group', 10);
             $table->timestamps();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clinical_services');
+        Schema::dropIfExists('blood_type');
     }
 };
