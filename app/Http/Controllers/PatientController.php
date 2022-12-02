@@ -81,7 +81,7 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PatientRequest $request)
     {   
         $patient = new Patient;
         $patient->first_name = ucwords($request['first_name']);
@@ -211,11 +211,10 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PatientRequest $request, $id)
     {
         $data = $request->all();
         
-        // dd($request);
         $patient = Patient::find($id);
         $patient['gender_id'] = $data['gender'];
         $patient['civil_status_id'] = $data['civil_status'];

@@ -26,7 +26,6 @@ class PatientRequest extends FormRequest
         return match($this->method()){
             'POST' => $this->store_and_update(),
             'PUT', 'PATCH' => $this->store_and_update(),
-            'DELETE' => $this->destroy(),
             default => $this->view()
         };
     }
@@ -39,12 +38,12 @@ class PatientRequest extends FormRequest
             'first_surname' => 'required|alpha|max:20',
             'second_surname' => 'alpha|max:20|nullable',
             'gender' => 'required',
-            'identification_number' => 'numeric|nullable',
-            'email' => 'email|nullable',
+            'identification_number' => 'required|alpha_num',
             'birthday_date' => 'required|date',
-
-            'address_1' => 'required|max:100',
-            'address_2' => 'max:100|nullable'
+            
+            'principal_address' => 'required|max:100',
+            'address_2' => 'max:100|nullable',
+            'email' => 'email|nullable',
         ];
     }
 
@@ -54,11 +53,4 @@ class PatientRequest extends FormRequest
             'gender.required' => 'Eleccion requerida',
         ];
     }
-
-    // public function attributes()
-    // {
-    //     return [
-    //         'first_name' => 'primer nombre',
-    //     ];
-    // }
 }
