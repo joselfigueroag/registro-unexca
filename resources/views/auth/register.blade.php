@@ -42,11 +42,11 @@
                             <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Rol') }}</label>
 
                             <div class="col-md-6">
-                                <select name="role" id="role" onchange="load_services(this);">
+                                <select name="role" id="role" required>
+                                    <option selected disabled value="" hidden>Seleccionar</option>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->name }}">{{ $role->name }}</option>
                                     @endforeach
-                                    <option selected value="" hidden>Seleccionar</option>
                                 </select>
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">

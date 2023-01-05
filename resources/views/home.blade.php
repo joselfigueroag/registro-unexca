@@ -8,7 +8,7 @@
                     <div class="card-header bg-primary">{{ __('Tablero') }}</div>
                     <div class="card-body d-flex justify-content-between">
                         <div class="col-5">
-                            @hasrole('admin')
+                            @hasrole('teacher')
                                 <div class="dropdown mb-3">
                                     <a class="col-12 btn btn-primary" href="{{ route('list_users') }}">
                                         Usuarios
@@ -29,16 +29,16 @@
                                         Servicios Clinicos
                                     </a>
                                 </div>
-                                <div class="dropdown mb-3">
+                                {{-- <div class="dropdown mb-3">
                                     <a class="col-12 btn btn-primary" type="button"
                                         href="{{ route('specialist_index') }}">Especialistas</a>
                                 </div>
                                 <div class="dropdown mb-3">
                                     <a class="col-12 btn btn-primary" type="button"
                                         href="/deleted_records">Registros Eliminados</a>
-                                </div>
+                                </div> --}}
                             @endhasrole
-                            @hasrole(['receptionist', 'admin'])
+                            @hasrole(['teacher', 'student'])
                                 <div class="dropdown mb-3">
                                     <a class="col-12 btn btn-primary" type="button"
                                     href="/patients">Pacientes</a>

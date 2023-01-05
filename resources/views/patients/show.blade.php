@@ -293,7 +293,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-end mt-3">
-            @hasrole('admin')
+            @hasrole('teacher')
                 <a class="btn btn-primary mr-auto me-3" type="submit" onclick="deleteConfirm(event)"
                     href="/patients/{{ $patient->id }}/delete">Eliminar</a>
             @endhasrole
