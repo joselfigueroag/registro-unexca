@@ -4,11 +4,14 @@
     <div class="container">
         <div class="row mb-3 justify-content-between">
             <div class="d-flex col-sm-3 mt-2">
-                <input type="text" class="form-control" name="user" id="user"
-                    value="{{ old('user') }}" placeholder="Usuario">
-                <div class="ms-2">
-                    <button class="btn btn-primary mr-auto" name="search" type="button">Buscar</button>
-                </div>
+                <form action="/users" method="POST" class="d-flex">
+                    @csrf
+                    <input type="text" class="form-control" name="search" placeholder="Buscar usuario o email"
+                        value="{{ $search }}">
+                    <div class="ms-2">
+                        <button class="btn btn-primary mr-auto" type="submit">Buscar</button>
+                    </div>
+                </form>
             </div>
             <div class="d-flex col-sm-2 mt-2 ">
                 <a class="btn btn-primary" name="add" type="button" href="{{ route('register_user') }}"

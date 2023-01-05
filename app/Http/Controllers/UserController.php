@@ -15,9 +15,17 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->input('user'));
-        $users = User::paginate(15);
-        return view('users.index', compact('users'));
+        $search = $request->input('search');
+        if($search){
+            $users = User::where(
+                'user', "LIKE", '%'.$search.'%'
+            )->orWhere(
+                'email', "LIKE", '%'.$search.'%'
+            )->paginate(15);
+        }else{
+            $users = User::paginate(15);
+        }
+        return view('users.index', compact('users', 'search'));
     }
 
     /**
