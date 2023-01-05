@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DepartmentRequest;
 use App\Models\Department;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::paginate(10);
+        $departments = Department::orderBy('name')->paginate(10);
         return view('departments.index', compact('departments'));
     }
 
@@ -34,9 +35,10 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartmentRequest $request)
     {
-        $department = new Department($request->all());
+        $department = new Department;
+        $department->name = ucwords($request['name']);
         $department->save();
         return redirect()->route('list_departments');
     }
@@ -70,9 +72,12 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request, $id)
     {
-        //
+        $department = Department::find($id);
+        $department->name = ucwords($request['name_edited']);
+        $department->save();
+        return redirect()->route('list_departments');
     }
 
     /**

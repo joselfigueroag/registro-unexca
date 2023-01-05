@@ -31,7 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::controller(UserController::class)->middleware('auth')->group(function(){
     Route::get('/users/register','create')->name('register_user');
-    Route::get('/users','index')->name('list_users');
+    Route::any('/users','index')->name('list_users');
     Route::get('/users/{id}','show')->name('show_user');
     Route::get('/users/{id}/delete','destroy')->name('delete_user');
 });
@@ -49,6 +49,7 @@ Route::controller(PatientController::class)->middleware('auth')->group(function(
 Route::controller(DepartmentController::class)->middleware('auth')->group(function(){
     Route::post('/departments','store')->name('add_department');
     Route::get('/departments','index')->name('list_departments');
+    Route::put('/departments/{id}/edit','update')->name('edit_department');
     Route::get('/departments/{id}/delete','destroy')->name('delete_department');
 });
 
