@@ -56,6 +56,7 @@ Route::controller(DepartmentController::class)->middleware('auth')->group(functi
 Route::controller(ClinicalServiceController::class)->middleware('auth')->group(function(){
     Route::post('/clinical_services','store')->name('add_clinical_service');
     Route::get('/clinical_services','index')->name('list_clinical_services');
+    Route::put('/clinical_services/{id}/edit','update')->name('edit_clinical_service');
     Route::get('/clinical_services/{id}/delete','destroy')->name('delete_clinical_service');
 });
 

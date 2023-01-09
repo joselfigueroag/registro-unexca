@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClinicalServiceRequest;
 use App\Models\ClinicalService;
 use App\Models\Department;
 use Illuminate\Http\Request;
@@ -36,13 +37,11 @@ class ClinicalServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClinicalServiceRequest $request)
     {   
-        $department = Department::where('name', $request['department'])->get()->first();
-
         $clinical_service = new ClinicalService;
         $clinical_service->name = ucwords($request['name']);
-        $clinical_service->department_id = $department->id;
+        $clinical_service->department_id = $request['department_id'];
         $clinical_service->save();
         return redirect()->route('list_clinical_services');
     }
@@ -76,9 +75,13 @@ class ClinicalServiceController extends Controller
      * @param  \App\Models\ClinicalService  $clinicalService
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ClinicalService $clinicalService)
+    public function update(Request $request, $id)
     {
-        //
+        $clinical_service = ClinicalService::find($id);
+        $clinical_service->name = ucwords($request['name_edited']);
+        $clinical_service->department_id = ucwords($request['department_edited']);
+        $clinical_service->save();
+        return redirect()->route('list_clinical_services');
     }
 
     /**

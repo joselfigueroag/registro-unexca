@@ -41,13 +41,6 @@
             {!! $departments->links() !!}
         </div>
 
-
-        <!-- Button trigger modal -->
-        {{-- <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
-            data-bs-target="#editFromDepartmentModal">
-            Editar
-        </button> --}}
-
         <!-- Modal -->
         <div class="modal fade" id="editFromDepartmentModal" tabindex="-1" aria-labelledby="editFromDepartmentModalLabel"
             aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
