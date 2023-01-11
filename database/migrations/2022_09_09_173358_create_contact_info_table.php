@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('email', 50)->nullable();
             $table->string('cellphone_number', 15)->nullable();
             $table->string('local_number', 15)->nullable();
-            $table->char('principal_address', 100);
-            $table->char('secondary_address', 100)->nullable();
+            $table->string('principal_address', 100);
+            $table->string('secondary_address', 100)->nullable();
             $table->timestamps();
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreign('parish_id')->references('id')->on('parishes')->onDelete('set null');

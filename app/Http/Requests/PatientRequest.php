@@ -23,15 +23,6 @@ class PatientRequest extends FormRequest
      */
     public function rules()
     {   
-        return match($this->method()){
-            'POST' => $this->store_and_update(),
-            'PUT', 'PATCH' => $this->store_and_update(),
-            default => $this->view()
-        };
-    }
-    
-    public function store_and_update()
-    {
         return [
             'first_name' => 'required|alpha|max:20',
             'second_name' => 'alpha|max:20|nullable',
@@ -40,17 +31,21 @@ class PatientRequest extends FormRequest
             'gender' => 'required',
             'identification_number' => 'required|alpha_num',
             'birthday_date' => 'required|date',
-            
             'principal_address' => 'required|max:100',
-            'address_2' => 'max:100|nullable',
-            'email' => 'email|nullable',
         ];
     }
-
-    public function messages()
+    
+    public function attributes()
     {
         return [
-            'gender.required' => 'Eleccion requerida',
+            'first_name' => 'Primer nombre',
+            'second_name' => 'Segundo nombre',
+            'first_surname' => 'Primer apellido',
+            'second_surname' => 'Segundo apellido',
+            'gender' => 'Genero',
+            'identification_number' => 'Numero de cedula',
+            'birthday_date' => 'Fecha de nacimiento',
+            'principal_address' => 'Direccion principal',
         ];
     }
 }
