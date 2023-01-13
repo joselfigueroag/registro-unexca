@@ -156,7 +156,7 @@ class PatientController extends Controller
         $personal_background->respiratory_p = $request['respiratory_p'] ? $request['respiratory_p'] : 'f';
         $personal_background->save();
 
-        return redirect()->action([PatientController::class, 'index']);
+        return redirect()->action([PatientController::class, 'show'], ['id' => $patient->id]);
     }
 
     /**
@@ -211,7 +211,7 @@ class PatientController extends Controller
      * @param  \App\Models\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(PatientRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         

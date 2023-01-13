@@ -29,7 +29,7 @@ class PatientRequest extends FormRequest
             'first_surname' => 'required|alpha|max:20',
             'second_surname' => 'alpha|max:20|nullable',
             'gender' => 'required',
-            'identification_number' => 'required|alpha_num',
+            'identification_number' => 'required|numeric|unique:patients',
             'birthday_date' => 'required|date',
             'principal_address' => 'required|max:100',
         ];

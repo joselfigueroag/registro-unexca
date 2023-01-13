@@ -527,6 +527,9 @@
                 </div>
             </div>
             <hr size="10">
+            <div>
+                <p style="color:red">*En caso de menores de edad, registrar numero de cedula del representante seguido de un numero correlativo a la cantidad de hijos, de menor a mayor.</p>
+            </div>
             <div class="d-flex justify-content-end">
                 <button class="btn btn-primary mr-auto" type="submit">Guardar</button>
             </div>

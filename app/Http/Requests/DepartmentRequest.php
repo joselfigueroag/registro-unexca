@@ -38,7 +38,7 @@ class DepartmentRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'nombre del departamento',
+            'name' => 'Nombre del departamento',
         ];
     }
     

@@ -35,7 +35,7 @@ class ClinicalServiceRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'nombre del servicio clinico',
+            'name' => 'Nombre del servicio clinico',
         ];
     }
 }
