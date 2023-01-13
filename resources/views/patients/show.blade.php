@@ -297,7 +297,8 @@
                 <a class="btn btn-primary mr-auto me-3" type="submit" onclick="deleteConfirm(event)"
                     href="/patients/{{ $patient->id }}/delete">Eliminar</a>
             @endhasrole
-            <a class="btn btn-primary mr-auto" href="/patients/{{ $patient->id }}/edit">Editar</a>
+            <a class="btn btn-primary mr-auto me-3" href="/patients/{{ $patient->id }}/edit">Editar</a>
+            <a class="btn btn-primary mr-auto" href="/patients/{{ $patient->id }}/report">Imprimir Ficha</a>
         </div>
         <hr size="10" class="mt-3">
 
