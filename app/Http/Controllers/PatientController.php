@@ -19,7 +19,7 @@ use App\Models\Patient;
 use App\Models\PersonalBackground;
 use App\Models\State;
 use Illuminate\Http\Request;
-
+use PDF;
 class PatientController extends Controller
 {
     public function __construct()
@@ -171,6 +171,17 @@ class PatientController extends Controller
         $departments = Department::all();
         $clinical_services = ClinicalService::all();
         return view('patients.show', compact('patient', 'departments', 'clinical_services'));
+    }
+
+    public function report($id)
+    {
+        $patient = Patient::find($id=$id);
+        $departments = Department::all();
+        $clinical_services = ClinicalService::all();
+        //$pdf = PDF::loadView('patients.show', compact('patient', 'departments', 'clinical_services'));
+        $pdf = PDF::loadView('patients.report',['patient' => $patient, 'departments' => $departments, 'clinical_services' =>$clinical_services]);
+        return $pdf->stream('archivo.pdf') ;
+
     }
 
     /**

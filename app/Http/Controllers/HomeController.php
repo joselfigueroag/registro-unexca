@@ -27,4 +27,5 @@ class HomeController extends Controller
         $departments = Department::all();
         return view('home', compact('departments'));
     }
+
 }

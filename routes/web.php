@@ -27,6 +27,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//prueba
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(UserController::class)->middleware('auth')->group(function(){
@@ -44,6 +46,7 @@ Route::controller(PatientController::class)->middleware('auth')->group(function(
     Route::get('/patients/{id}/edit','edit')->name('edit_patient');
     Route::put('/patients/{id}/edit','update')->name('update_patient');
     Route::get('/patients/{id}/delete','destroy')->name('delete_patient');
+    Route::get('patients/{id}/report', 'report')->name('report_patient');
 });
 
 Route::controller(DepartmentController::class)->middleware('auth')->group(function(){
