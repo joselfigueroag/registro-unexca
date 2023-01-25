@@ -142,7 +142,7 @@
       <table class="table mt-2 container-sm col-12 ">
         <thead class="">
             <tr>
-                <th class="text-center" colspan="4"><h3><u>Informacion Medica</u></h3></th>
+                <th class="text-center" colspan="5"><h3><u>Informacion Medica</u></h3></th>
             </tr>
           </thead>
         <tbody>
