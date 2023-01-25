@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group custom-div">
                     <label for="birthday_date">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" name="birthday_date" value="{{ old('birthday_date') }}">
+                    <input type="date" class="form-control" name="birthday_date" value="{{ old('birthday_date') }}" max="{{date('Y-m-d')}}">
                     @if ($errors->has('birthday_date'))
                         <div class="error-message">{{ $errors->first('birthday_date') }}</div>
                     @endif

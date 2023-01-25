@@ -11,6 +11,9 @@
         @page {
             margin: 0cm 0cm;
         }
+        body {
+            margin: 2cm 0cm 0cm;
+        }
 
         header {
             position: fixed;
@@ -166,11 +169,11 @@
                         <p><span class="fw-bold small">Epilepsia: {{ $family_background->epilepsy_f() }}</span></p>
                         <p><span class="fw-bold small">Obesidad: {{ $family_background->obesity_f() }}</span></p>
                         <p><span class="fw-bold small">Alcoholismo: {{ $family_background->alcoholism_f() }}</span></p>
-                        
+                        <p><span class="fw-bold small">Carcinomas: {{ $family_background->carcinomas_f() }}</span></p>
               </td>
               <td class="col-3 small" >
                         <h6>Familiares<h6>
-                        <p><span class="fw-bold small">Carcinomas: {{ $family_background->carcinomas_f() }}</span></p>
+                        
                         <p><span class="fw-bold small">Cardiopatias: {{ $family_background->heart_disease_f() }}</span></p>
                         <p><span class="fw-bold small">Hepatopatias: {{ $family_background->liver_disease_f() }}</span></p>
                         <p><span class="fw-bold small">Nefropatias: {{ $family_background->nephropathy_f() }}</span></p>
@@ -189,7 +192,8 @@
                         <p><span class="fw-bold small">Carcinomas: {{ $personal_background->carcinomas_p() }}</span></p>
                         <p><span class="fw-bold small">Cirugias previas: {{ $personal_background->surgeries_p() }}</span></p>
                         <p><span class="fw-bold small">Cardiopatias: {{ $personal_background->heart_disease_p() }}</span></p>
-                        
+                        <p><span class="fw-bold small">Enf. Respiratorias: {{ $personal_background->respiratory_p() }}</span></p>
+
               </td>
               <td class="col-3 small">
                         <h6>Personales<h6> 
@@ -200,7 +204,6 @@
                         <p><span class="fw-bold small">Enf. Endocrinas: {{ $personal_background->endocrine_p() }}</span></p>
                         <p><span class="fw-bold small">Enf. Hematologicas: {{ $personal_background->hematological_p() }}</span></p>
                         <p><span class="fw-bold small">Enf. Autoinmunes: {{ $personal_background->autoimmune_p() }}</span></p>
-                        <p><span class="fw-bold small">Enf. Respiratorias: {{ $personal_background->respiratory_p() }}</span></p>
               </td>
             </tr>
         </tbody>
