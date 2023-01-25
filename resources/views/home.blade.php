@@ -63,4 +63,141 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-sm-4 mt-1"> 
+                            <div class="card" >
+                                <div class="card-header bg-primary text-light">Citas por Mes</div>
+                                <div class="card-body">
+                                    <h1></h1>
+                                    <div>
+                                    <canvas id="CMES"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="col-sm-4 mt-1"> 
+                            <div class="card ">
+                                <div class="card-header bg-primary text-light">Citas Pendientes</div>
+                                <div class="card-body">
+                                    <h1></h1>
+                                    <div>
+                                    <canvas id="CPENDIENTES"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-sm-4 mt-1"> 
+                        
+                        <div class="card">
+                            <div class="card-header bg-primary text-light">Citas por servicio</div>
+                            <div class="card-body">
+                                <h1></h1>
+                                <div>
+                                <canvas id="CSERVICIOS"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+ 
+</body>
+
 @endsection
+
+<script src="{{ asset('chart.js/chart.js') }}"></script>
+<script>
+
+
+
+function onload_funtion(){
+      citas_mes();
+      citas_pendientes();
+      citas_servicio();
+    }
+
+function citas_mes(){
+
+var meses = ["enero","febrero","marzo"]
+
+const $grafica = document.getElementById('CMES');
+const citas = {
+    label: "total",
+    data: [20 ,10 ,30], 
+    backgroundColor:'rgba(54, 162, 255, 0.6)',
+};
+
+new Chart($grafica, {
+    type: 'bar',
+    data: {
+        labels: meses,
+        datasets: [
+            citas,
+        ]
+    },
+
+});
+
+
+
+}
+//citas pendientes
+function citas_pendientes(){
+
+var meses = ["abril","mayo","junio"]
+
+const $grafica = document.getElementById('CPENDIENTES');
+const citas = {
+    label: "total",
+    data: [5 ,22 ,15], 
+    backgroundColor:'rgba(54, 162, 255, 0.6)',
+};
+
+new Chart($grafica, {
+    type: 'bar',
+    data: {
+        labels: meses,
+        datasets: [
+            citas,
+        ]
+    },
+
+});
+
+
+
+}
+//citas servicio
+function citas_servicio(){
+
+var meses = ["Odontologia","Cardiologia","Unidad Coronaria"]
+
+const $grafica = document.getElementById('CSERVICIOS');
+const citas = {
+    label: "total",
+    data: [3 ,6 ,2], 
+    backgroundColor:'rgba(54, 162, 255, 0.6)',
+};
+
+new Chart($grafica, {
+    type: 'bar',
+    data: {
+        labels: meses,
+        datasets: [
+            citas,
+        ]
+    },
+
+});
+
+
+
+}
+
+</script>

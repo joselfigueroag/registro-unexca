@@ -103,4 +103,54 @@ class AppointmentController extends Controller
     {
         //
     }
+
+    public function graf()
+    {
+        $año = date('Y');
+        $mes = date('m');
+        $v = 0;
+        for ($i = 1; $i <= $mes; $i++) {
+            $e = $i;
+            switch ($e) {
+                case 1:
+                    $mes_aux = 'enero';
+                    break;
+                case 2:
+                    $mes_aux = 'febrero';
+                    break;
+                case 3:
+                    $mes_aux = 'marzo';
+                    break;
+                case 4:
+                    $mes_aux = 'abril';
+                    break;
+                case 5:
+                    $mes_aux = 'mayo';
+                    break;
+                case 6:
+                    $mes_aux = 'junio';
+                    break;
+                case 7:
+                    $mes_aux = 'julio';
+                    break;
+                case 8:
+                    $mes_aux = 'agosto';
+                    break;
+                case 9:
+                    $mes_aux = 'septiembre';
+                    break;
+                case 10:
+                    $mes_aux = 'octubre';
+                    break;
+                case 11:
+                    $mes_aux = 'noviembre';
+                    break;
+                case 12:
+                    $mes_aux = 'diciembre';
+                    break;
+
+            }
+        }
+        return view('statistics.index',compact('mes_aux'));
+    }
 }

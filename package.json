@@ -16,6 +16,7 @@
         "vite": "^2.9.11"
     },
     "dependencies": {
+        "chart.js": "^3.9.1",
         "dom-pdf": "^0.0.4",
         "jquery": "^3.6.1",
         "sweetalert": "^2.1.2"
