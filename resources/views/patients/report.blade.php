@@ -12,7 +12,7 @@
             margin: 0cm 0cm;
         }
         body {
-            margin: 2cm 0cm 0cm;
+            margin: 1.5cm 0cm 0cm;
         }
 
         header {
@@ -20,17 +20,29 @@
             top: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 2cm;
+            height: 1.5cm;
             background-color: #2a0927;
             color: white;
             text-align: center;
             line-height: 30px;
+        }
+        footer {
+            position: fixed;
+            bottom: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 0.5cm;
+            text-align: center;
+            line-height: 35px;
         }
         </style>
 </head>
 <header class="bg-primary">
     <h1 class="text-center" >Historia Clinica: {{ $patient->clinic_history }}</h1>
 </header>
+<footer>
+    <h6 class="text-center" >Reporte generado el {{date('Y-m-d')}}</h6>
+</footer> 
 <body>
 <div class="row">
     <div class="col-12" >

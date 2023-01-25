@@ -6,7 +6,7 @@ use App\Models\Appointment;
 use App\Models\Department;
 use App\Models\ClinicalService;
 use Illuminate\Http\Request;
-
+use PDF;
 class AppointmentController extends Controller
 {
     /**
@@ -30,6 +30,26 @@ class AppointmentController extends Controller
         }
         return view('appointments.index', compact('appointments', "clinical_services", 'date'));
     }
+    public function report(Request $request)
+    {   
+        $clinical_services = ClinicalService::all();
+        $date = $request->input('date');
+        $clinical_service = $request->input('clinical_service');
+        if ($date && $clinical_service) {
+            $appointments = Appointment::where([['clinical_service_id', $clinical_service], ['appointment_date', $date]])->with('clinical_service', 'clinical_service.department')->paginate(100);
+        } elseif ($date) {
+            $appointments = Appointment::where('appointment_date', $date)->paginate(100);
+        } elseif ($clinical_service) {
+            $appointments = Appointment::where('clinical_service_id', $clinical_service)->with('clinical_service')->paginate(100);
+        } else {
+            $appointments = Appointment::paginate(15);
+        }
+
+        $pdf = PDF::loadView('appointments.report',['appointments' => $appointments, "clinical_services" => $clinical_services, 'date' => $date]);
+        return $pdf->stream('appointments.pdf') ;
+        //return view('appointments.report', compact('appointments', "clinical_services", 'date'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -103,7 +123,7 @@ class AppointmentController extends Controller
     {
         //
     }
-
+    //esta funcion se encargara de llenar la grafica se debe hacer un array con todos los datos para de esta forma mandar una sola variable a cada grafico
     public function graf()
     {
         $año = date('Y');
@@ -151,6 +171,7 @@ class AppointmentController extends Controller
 
             }
         }
+
         return view('statistics.index',compact('mes_aux'));
     }
 }

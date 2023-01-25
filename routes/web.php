@@ -64,6 +64,7 @@ Route::controller(ClinicalServiceController::class)->middleware('auth')->group(f
 Route::controller(AppointmentController::class)->middleware('auth')->group(function(){
     Route::any('/appointments','index')->name('list_appointments');
     Route::post('/appointments/register/patient/{id}','store')->name('register_appointment');
+    Route::get('/appointments/report','report')->name('report_appointments');
 });
 
 Route::controller(SpecialistController::class)->middleware('auth')->group(function(){

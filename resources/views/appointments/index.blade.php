@@ -14,8 +14,10 @@
                     <option selected value="" hidden>Seleccionar</option>
                 </select>
                 <div class="vr"></div>
-                <div class="ms-2">
-                    <button class="btn btn-primary mr-auto" type="submit">Buscar</button>
+                
+                <div class="container d-flex">
+                    <button class="btn btn-primary mr-auto me-3" type="submit">Buscar</button>
+                    <a class="btn btn-primary mr-auto" target="_blank" href="/appointments/report">Reporte de citas</a>
                 </div>
             </form>
         </div>

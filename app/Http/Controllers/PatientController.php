@@ -178,7 +178,7 @@ class PatientController extends Controller
         $patient = Patient::find($id=$id);
         $departments = Department::all();
         $clinical_services = ClinicalService::all();
-        $pdf = PDF::loadView('patients.show', compact('patient', 'departments', 'clinical_services'));
+        //$pdf = PDF::loadView('patients.show', compact('patient', 'departments', 'clinical_services'));
         $pdf = PDF::loadView('patients.report',['patient' => $patient, 'departments' => $departments, 'clinical_services' =>$clinical_services]);
         return $pdf->stream('archivo.pdf') ;
         //return view('patients.report',['patient' => $patient, 'departments' => $departments, 'clinical_services' =>$clinical_services]);
