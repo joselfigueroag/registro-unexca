@@ -57,22 +57,10 @@ class PatientController extends Controller
         $civil_status = CivilStatus::all();
         $blood_types = BloodType::all();
         $countries = Country::all();
-        $states = State::all();
-        $capitals = Capital::all();
-        $municipalities = Municipality::all();
         $parishes = Parish::all();
-        return view(
-            'patients.register',
-            compact(
-                'civil_status',
-                'blood_types',
-                'countries',
-                'states',
-                'capitals',
-                'municipalities',
-                'parishes',
-            )
-        );
+        $direccion = Country::with('states','states.capital','states.capital.municipalities')->get();
+        return view('patients.register',compact('civil_status','blood_types','countries','parishes','direccion'));
+        
     }
 
     /**

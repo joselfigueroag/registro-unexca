@@ -151,7 +151,7 @@
             <div class="form-row d-flex mb-3">
                 <div class="form-group custom-div-dir-structure">
                     <label for="country">Pais</label>
-                    <select name="country" id="country">
+                    <select name="country" id="country" onchange="activate(this);">
                         <option selected value="" hidden>Seleccionar</option>
                         @foreach ($countries as $country)
                             <option value="">{{ $country->name }}</option>
@@ -163,13 +163,8 @@
                 </div>
                 <div class="form-group custom-div-dir-structure">
                     <label for="state">Estado</label>
-                    <select name="state" id="state">
+                    <select name="state" id="state" disabled onchange="activate(this);">
                         <option selected value="" hidden>Seleccionar</option>
-                        @foreach ($countries as $country)
-                            @foreach ($country->states as $state)
-                                <option value="">{{ $state->name }}</option>
-                            @endforeach
-                        @endforeach
                     </select>
                     @if ($errors->has('state'))
                         <div class="error-message">{{ $errors->first('state') }}</div>
@@ -177,13 +172,8 @@
                 </div>
                 <div class="form-group custom-div-dir-structure">
                     <label for="capital">Capital</label>
-                    <select name="capital" id="capital">
+                    <select name="capital" id="capital" disabled onchange="activate(this);">
                         <option selected value="" hidden>Seleccionar</option>
-                        @foreach ($countries as $country)
-                            @foreach ($country->states as $state)
-                                <option value="">{{ $state->capital->name }}</option>
-                            @endforeach
-                        @endforeach
                     </select>
                     @if ($errors->has('capital'))
                         <div class="error-message">{{ $errors->first('capital') }}</div>
@@ -191,15 +181,8 @@
                 </div>
                 <div class="form-group custom-div-dir-structure">
                     <label for="municipality">Municipio</label>
-                    <select name="municipality" id="municipality">
+                    <select name="municipality" id="municipality" disabled onchange="activate(this);">
                         <option selected value="" hidden>Seleccionar</option>
-                        @foreach ($countries as $country)
-                            @foreach ($country->states as $state)
-                                @foreach ($state->capital->municipalities as $municipality)
-                                    <option value="">{{ $municipality->name }}</option>
-                                @endforeach
-                            @endforeach
-                        @endforeach
                     </select>
                     @if ($errors->has('municipality'))
                         <div class="error-message">{{ $errors->first('municipality') }}</div>
@@ -207,17 +190,8 @@
                 </div>
                 <div class="form-group custom-div-dir-structure">
                     <label for="parish">Parroquia</label>
-                    <select name="parish" id="parish">
+                    <select name="parish" id="parish" disabled onchange="activate(this);">
                         <option selected value="" hidden>Seleccionar</option>
-                        @foreach ($countries as $country)
-                            @foreach ($country->states as $state)
-                                @foreach ($state->capital->municipalities as $municipality)
-                                    @foreach ($municipality->parishes as $parish)
-                                        <option value="{{ $parish->id }}">{{ $parish->name }}</option>
-                                    @endforeach
-                                @endforeach
-                            @endforeach
-                        @endforeach
                     </select>
                     @if ($errors->has('parish'))
                         <div class="error-message">{{ $errors->first('parish') }}</div>
@@ -536,3 +510,77 @@
         </form>
     </div>
 @endsection
+
+<script>
+    function onload_function() {
+        
+    }
+    var direccion = @json($direccion);
+    count_estados=direccion[0].states.length
+
+        //console.log(direccion[0].states[0].capital);
+        
+
+    function activate(opc) {
+        switch (opc.id) {
+            case 'country':
+                document.getElementById('state').disabled = false;
+                var opc_num = 1;
+                for (var i=0;i<count_estados;i++){
+                    document.getElementById('state').options[opc_num] = new Option(direccion[0].states[i].name,direccion[0].states[i].id);
+                    opc_num++;
+                }
+                break;
+            case 'state':
+                
+                //document.getElementById('capital').options.length=0;
+                var opc_num = 1;
+                document.getElementById('capital').disabled = false;
+                for (var i=0;i<count_estados;i++){
+                    estado_id = direccion[0].states[i].capital.state_id
+                    if (opc.value == estado_id){
+                        var capital =  direccion[0].states[i].capital.name
+                        var valor = direccion[0].states[i].capital.id
+                        var longitud_municipalities = direccion[0].states[i].capital.municipalities.length
+                        var _estado = i
+                    }
+                    opc_num++; 
+                }
+                document.getElementById('capital').options[1] = new Option(capital,valor)
+                long_municip = longitud_municipalities
+                numero_estado = _estado;
+            break;
+            case 'capital':
+                var opc_num = 1;
+                document.getElementById('municipality').disabled = false;
+                document.getElementById('municipality').options.length=0;
+                document.getElementById('municipality').options[0] = new Option('Seleccionar','null',true,true)
+                document.getElementById('municipality').options[0].hidden = true;
+                for (var i=0;i<long_municip;i++){
+                    document.getElementById('municipality').options[opc_num] = new Option(direccion[0].states[numero_estado].capital.municipalities[i].name,direccion[0].states[numero_estado].capital.municipalities[i].id)
+                    opc_num++; 
+                }
+            break;
+            case 'municipality':
+                
+                const parroquias = @json($parishes);
+                document.getElementById('parish').disabled = false;
+                cant_parroquias = parroquias.length
+                document.getElementById('parish').options.length=0;
+                document.getElementById('parish').options[0] = new Option('Seleccionar','null',true,true)
+                document.getElementById('parish').options[0].hidden = true;
+                var opc_num = 1;
+                for (var i = 0;i<cant_parroquias;i++ ){
+                    if (opc.value == parroquias[i].municipality_id){
+                        document.getElementById('parish').options[opc_num] = new Option(parroquias[i].name,parroquias[i].id)
+                        opc_num++;
+                    }
+                    
+                }
+            break;
+            default:
+            break;
+        }
+        
+    }
+</script>

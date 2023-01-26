@@ -116,7 +116,7 @@
 
 
 
-function onload_funtion(){
+function onload_function(){
       citas_mes();
       citas_pendientes();
       citas_servicio();
